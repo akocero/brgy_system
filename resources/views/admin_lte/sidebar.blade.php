@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link text-sm">
-        <img src="{{ asset('images/dap_logo.png')}}" alt="Dap Logo" class="brand-image" style="opacity: .8">
+        {{-- <img src="{{ asset('images/dap_logo.png')}}" alt="Dap Logo" class="brand-image" style="opacity: .8"> --}}
         <span class="brand-text font-weight-light">FMIS</span>
     </a>
 

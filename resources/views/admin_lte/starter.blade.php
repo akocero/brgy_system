@@ -1,4 +1,4 @@
-@extends('layouts.adminlte')
+@extends('layouts.main')
 
 @section('title', 'Budget Proposal')
 

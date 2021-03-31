@@ -27,7 +27,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    @include('admin_lte.contentHeader')
+    @include('admin_lte.content_header')
     <!-- /.content-header -->
 
     <!-- Main content -->
@@ -45,7 +45,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.content-wrapper -->
 
   <!-- Right Control Sidebar -->
-  @include('admin_lte.rightSidebar')
+  @include('admin_lte.right_sidebar')
   <!-- /.Right control-sidebar -->
 
   <!-- Main Footer -->
