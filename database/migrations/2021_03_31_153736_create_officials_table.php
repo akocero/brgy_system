@@ -15,6 +15,9 @@ class CreateOfficialsTable extends Migration
     {
         Schema::create('officials', function (Blueprint $table) {
             $table->id();
+            $table->string('full_name');
+            $table->string('position');
+            $table->text('details')->nullable();
             $table->timestamps();
         });
     }
