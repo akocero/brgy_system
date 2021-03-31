@@ -62424,3 +62424,35 @@ body {
   font-family: "Source Sans Pro", sans-serif !important;
   letter-spacing: 0.2px !important;
 }
+
+.card {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px !important;
+  border: none !important;
+}
+
+table.table td, table.table th {
+  border: 1px solid #E9E9E9 !important;
+  padding: 6px !important;
+}
+
+table.table tr:nth-child(even) {
+  background-color: #FCFCFC !important;
+}
+
+th {
+  font-weight: 600;
+  background-color: #F9F9F9 !important;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 500 !important;
+  color: #3b3b3b;
+  letter-spacing: 1.6;
+}
+
+.navbar-badge {
+  position: absolute;
+  right: -2px;
+  font-size: 0.5rem;
+}
