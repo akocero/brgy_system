@@ -15,6 +15,9 @@ class CreateHouseholdsTable extends Migration
     {
         Schema::create('households', function (Blueprint $table) {
             $table->id();
+            $table->string('family_name');
+            $table->text('details')->nullable();
+            $table->tinyInteger('active')->default(1);
             $table->timestamps();
         });
     }
