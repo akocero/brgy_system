@@ -46,6 +46,7 @@ class ResidentController extends Controller
      */
     public function create()
     {
+
         $households = Household::all()->sortBy('family_name');
         return view('residents.create', compact('households'));
     }
@@ -82,7 +83,9 @@ class ResidentController extends Controller
      */
     public function edit(Resident $resident)
     {
-        //
+
+        $households = Household::all()->sortBy('family_name');
+        return view('residents.edit', compact('households', 'resident'));
     }
 
     /**
@@ -94,7 +97,7 @@ class ResidentController extends Controller
      */
     public function update(Request $request, Resident $resident)
     {
-        //
+        $resident->update($this->validatedData());
     }
 
     /**
