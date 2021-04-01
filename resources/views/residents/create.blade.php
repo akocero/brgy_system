@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
 
-@section("title","Dashboard")
+@section("title","Add Resident")
 
 @section('content')
     <div class="card">
         <div class="col-12 pt-3 px-3">
-            <h4 class="h4">Welcome Name!</h4>
+            <h4 class="h4">Add new resident</h4>
             <hr class="pb-0 mb-0">
         </div>
         
@@ -14,6 +14,7 @@
             <form action="{{ route('residents.store') }}" method="POST">
                 @csrf
                 <div class="row">
+
                     <div class="form-group col-md-4">
                         <label for="last_name">Last Name</label>&nbsp;<small class="text-danger">*</small>
                         <input type="text" class="form-control @error('last_name') {{ 'is-invalid' }}@enderror" id="last_name" name="last_name" placeholder="Type Lastname..." value="{{ old('last_name') }}">
@@ -58,7 +59,7 @@
                         @enderror
                     </div>
 
-                    
+
 
                     <div class="form-group col-md-4">
                         <label for="email">Email (Optional)</label>
@@ -77,8 +78,8 @@
                         <select class="custom-select  @error('gender') {{ 'is-invalid' }}@enderror"
                                 name="gender" id="gender">
                             <option value="">Choose ...</option>
-                            <option value="male" {{ old('gender') ? 'selected' : ''}}>Male</option>
-                            <option value="female" {{ old('gender') ? 'selected' : ''}}>Female</option>
+                            <option value="male" {{ old('gender') == 'male' ? 'selected' : ''}}>Male</option>
+                            <option value="female" {{ old('gender') == 'female' ? 'selected' : ''}}>Female</option>
                         </select>
 
                         @error('gender')
@@ -92,8 +93,8 @@
                         <select class="custom-select  @error('civil_status') {{ 'is-invalid' }}@enderror"
                                 name="civil_status" id="civil_status">
                             <option value="">Choose ...</option>
-                            <option value="single" {{ old('civil_status') ? 'selected' : ''}}>Single</option>
-                            <option value="married" {{ old('civil_status') ? 'selected' : ''}}>Married</option>
+                            <option value="single" {{ old('civil_status')  == 'single' ? 'selected' : ''}}>Single</option>
+                            <option value="married" {{ old('civil_status')  == 'married' ? 'selected' : ''}}>Married</option>
                         </select>
 
                         @error('civil_status')
@@ -114,7 +115,7 @@
 
                     <div class="form-group col-md-4">
                         <label for="occupation">Occupation (Optional)</label>
-                        <input type="text" class="form-control @error('occupation') {{ 'is-invalid' }}@enderror" id="occupation" name="occupation" placeholder="Type Firstname..." value="{{ old('occupation') }}">
+                        <input type="text" class="form-control @error('occupation') {{ 'is-invalid' }}@enderror" id="occupation" name="occupation" placeholder="Type Firstname..." value="{{ old('occupation')  }}">
 
                         @error('occupation')
                             <small class="text-danger">
@@ -147,7 +148,7 @@
 
                     <div class="form-group col-md-6">
                         <label for="address">Address</label>
-                        <textarea type="text" class="form-control @error('address') {{ 'is-invalid' }}@enderror" id="address" name="address" placeholder="Type Firstname..." value="{{ old('address') }}"></textarea>
+                        <textarea type="text" class="form-control @error('address') {{ 'is-invalid' }}@enderror" id="address" name="address" placeholder="Type Firstname..." value="">{{ old('address') }}</textarea>
 
                         @error('address')
                             <small class="text-danger">
@@ -185,8 +186,8 @@
                         <select class="custom-select  @error('is_voter') {{ 'is-invalid' }}@enderror"
                                 name="is_voter" id="is_voter">
                             <option value="">Choose ...</option>
-                            <option value="1" {{ old('is_voter') ? 'selected' : ''}}>Yes</option>
-                            <option value="0" {{ old('is_voter') ? 'selected' : ''}}>No</option>
+                            <option value="1" {{ old('is_voter') == '1' ? 'selected' : ''}}>Yes</option>
+                            <option value="0" {{ old('is_voter') == '0' ? 'selected' : ''}}>No</option>
                         </select>
 
                         @error('is_voter')

@@ -18,33 +18,23 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-gem"></i>
                         <p>
-                            Budget Proposal
+                            Data Entry
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="{{ route('residents.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Residents</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Budget Proposal</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active" data-toggle="tooltip" data-placement="top" title="Create Budget Proposal">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Create BP</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="tooltip" data-placement="top" title="Manage Budget Proposal">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage BP</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="tooltip" data-placement="top" title="Consolidate Budget Proposal">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Consolidate BP</p>
+                                <p>Households</p>
                             </a>
                         </li>
                     </ul>

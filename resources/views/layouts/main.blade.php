@@ -56,27 +56,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <script src="/js/app.js"></script>
 <script>
-  // $(function () {
-  //     $('[data-toggle="tooltip"]').tooltip()
+  $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
 
-  //     // checkActiveLinks();
-  // });
+      checkActiveLinks();
+  });
 
 
-  // function checkActiveLinks() {
-  //     var navlinks = document.querySelectorAll('.nav-treeview .nav-link');
-  //     var url      = window.location.href;    
-  //     navlinks.forEach(link => {
-  //       if(link.href === url){
-  //         // console.log(link.href);
-  //         link.parentElement.parentElement.parentElement.classList.add('menu-open');
-  //         link.parentElement.parentElement.parentElement.children[0].classList.add('active');
-  //         link.classList.add('active');
-  //       }else{
-  //         link.classList.remove('active');
-  //       }
-  //     });
-  // }
+  function checkActiveLinks() {
+      var navlinks = document.querySelectorAll('.nav-treeview .nav-link');
+      var url      = window.location.href;    
+      navlinks.forEach(link => {
+        if(link.href === url){
+          // console.log(link.href);
+          link.parentElement.parentElement.parentElement.classList.add('menu-open');
+          link.parentElement.parentElement.parentElement.children[0].classList.add('active');
+          link.classList.add('active');
+        }else{
+          link.classList.remove('active');
+        }
+      });
+  }
 </script>
 @yield('scripts')
 </body>
