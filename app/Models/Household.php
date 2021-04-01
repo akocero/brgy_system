@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Household extends Model
 {
     use HasFactory;
+
+    public function residents()
+    {
+        return $this->hasMany(Resident::class);
+    }
 }
