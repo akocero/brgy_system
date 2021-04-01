@@ -15,7 +15,7 @@ class CreateResidentsTable extends Migration
     {
         Schema::create('residents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('household_id')->constrained('households');
+            $table->foreignId('household_id')->constrained('households')->nullable();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('middle_name')->nullable();
@@ -23,10 +23,10 @@ class CreateResidentsTable extends Migration
             $table->text('address');
             $table->string('gender');
             $table->string('mobile_no');
-            $table->string('landine')->nullable();
+            $table->string('landline')->nullable();
             $table->string('email')->nullable();
             $table->date('date_of_birth')->nullable();
-            $table->date('place_of_birth')->nullable();
+            $table->string('place_of_birth')->nullable();
             $table->string('occupation')->nullable();
             $table->string('citizenship')->nullable();
             $table->string('civil_status');

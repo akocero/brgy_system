@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Resident extends Model
 {
     use HasFactory;
+
+
+    protected $guarded = [];
+
+    public function household()
+    {
+        return $this->belongsTo(Household::class);
+    }
 }
