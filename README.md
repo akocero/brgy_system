@@ -26,13 +26,13 @@ php artisan key:generate
 ```
 
 Then turn on Apache and MySQL service: and create the database name **db_brgy_v2**
-
 This command will add columns and seeds the database
+
 ```bash
 php artisan migrate:fresh --seed
 
 This command will start a local env to your device
-```
+
 ```bash
 php artisan serve
 ```
