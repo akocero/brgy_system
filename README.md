@@ -7,7 +7,7 @@ Input these lines of code on the command line (open directory with code editor a
 ```bash
 git clone https://gitlab.com/akocero/brgy_system_v2.git
 ```
-Note **if you already installed cross-env you can skip this step**
+Note **if you already installed cross-env you can skip this step** you can proceed to npm install
 
 ```bash
 npm install --global cross-env
