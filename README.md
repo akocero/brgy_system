@@ -30,7 +30,7 @@ This command will add columns and seeds the database
 
 ```bash
 php artisan migrate:fresh --seed
-
+```
 This command will start a local env to your device
 
 ```bash
