@@ -36,7 +36,9 @@
                     <tr>
                         <th scope="col">Business Name</th>
                         <th scope="col">Contact no.</th>
-                        <th width="10%">Actions</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Permit Expiration Date</th>
+                        <th width="15%">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,6 +48,9 @@
                                 {{ $business->name }}
                             </td>
                             <td>{{ $business->mobile_no }}</td>
+                            <td>{{ $business->email }}</td>
+                            <td>{{ $business->permit_expiration_date }}</td>
+                            
                             <td>
                                 <a class="btn btn-sm btn-regular" href="{{ route('businesses.edit', $business->id) }}">
                                     <i class="far fa-edit"></i>
@@ -53,9 +58,9 @@
                                 <a class="btn btn-sm btn-regular" href="{{ route('businesses.show', $business->id) }}">
                                     <i class="far fa-folder-open"></i>
                                 </a>
-                                {{-- <button class="btn btn-sm btn-regular">
-                                    <i class="far fa-trash-alt"></i>
-                                </button> --}}
+                                <button class="btn btn-sm btn-regular">
+                                    <i class="far fa-bell"></i>
+                                </button>
                             </td>
                         </tr>
                     @empty

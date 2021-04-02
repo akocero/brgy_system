@@ -1,13 +1,13 @@
 @extends('layouts.main')
 
-@section('title', 'Households')
+@section('title', 'Officials')
 
 @section('content')
 
 
                 <div
                 class="modal fade show"
-                id="household_modal"
+                id="official_modal"
                 tabindex="-1"
                 role="dialog"
                 aria-labelledby="exampleModalLabel"
@@ -17,7 +17,7 @@
                         <div class="modal-content ">
 
                             <div class="modal-header border-bottom-0 pb-0">
-                                <h5 class="modal-title" id="exampleModalLabel">Households</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Officials</h5>
 
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -26,22 +26,37 @@
                             
                             <div class="modal-body">
                                 
-                                <form action="{{ route('households.store') }}" method="post" id="add_form">
+                                <form action="{{ route('officials.store') }}" method="post" id="add_form">
                                     <div class="row">
                                         @csrf
                                         <div class="form-group col-md-12">
-                                            <label>Name</label>
+                                            <label>Full Name</label>
 
                                             <input
                                                 type="text"
-                                                class="form-control @error('family_name') {{ 'is-invalid' }}@enderror"
-                                                name="family_name"
-                                                id="family_name"
-                                                value="{{ old('family_name') }}"
-                                                placeholder="Type family_name..."
+                                                class="form-control @error('full_name') {{ 'is-invalid' }}@enderror"
+                                                name="full_name"
+                                                id="full_name"
+                                                value="{{ old('full_name') }}"
+                                                placeholder="Type full_name..."
                                                 required>
 
-                                            @error('family_name')
+                                            @error('full_name')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label for="position">Position</label>
+
+                                            <select class="custom-select  @error('position') {{ 'is-invalid' }}@enderror"
+                                                    name="position" id="position">
+                                                <option value="">Choose ...</option>
+                                                <option value="councilor" {{ old('position') == 'councilor' ? 'selected' : ''}}>Councilor</option>
+                                                <option value="IT" {{ old('position') == 'IT' ? 'selected' : ''}}>IT</option>
+                                            </select>
+
+                                            @error('position')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
@@ -77,14 +92,29 @@
 
                                             <input
                                                 type="text"
-                                                class="form-control @error('family_name') {{ 'is-invalid' }}@enderror"
-                                                name="family_name"
-                                                id="family_name"
-                                                value="{{ old('family_name') }}"
-                                                placeholder="Type family_name..."
+                                                class="form-control @error('full_name') {{ 'is-invalid' }}@enderror"
+                                                name="full_name"
+                                                id="full_name"
+                                                value="{{ old('full_name') }}"
+                                                placeholder="Type full_name..."
                                                 required>
 
-                                            @error('family_name')
+                                            @error('full_name')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label for="position">Position</label>
+
+                                            <select class="custom-select  @error('position') {{ 'is-invalid' }}@enderror"
+                                                    name="position" id="position">
+                                                <option value="">Choose ...</option>
+                                                <option value="councilor" {{ old('position') == 'councilor' ? 'selected' : ''}}>Councilor</option>
+                                                <option value="IT" {{ old('position') == 'IT' ? 'selected' : ''}}>IT</option>
+                                            </select>
+
+                                            @error('position')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
@@ -140,8 +170,8 @@
                             id="open_button"
                             class="btn btn-secondary btn-flat"
                             data-toggle="modal"
-                            data-target="#household_modal">
-                                New Household
+                            data-target="#official_modal">
+                                New Official
                         </button>
 
                     </div>
@@ -150,12 +180,12 @@
                     </div>
                     <div class="card-body">
                         
-                            <form action="{{ route('households.index') }}" method="get">
+                            <form action="{{ route('officials.index') }}" method="get">
                                 @csrf
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <label for="search">Search (Hit enter)</label>
-                                        <a style="float: right" href="{{ route('households.index') }}">
+                                        <a style="float: right" href="{{ route('officials.index') }}">
                                             View all
                                         </a>
                                         <input type="text" class="form-control" id="search" name="search" placeholder="Enter Family Name or Details..." required value="{{ $search ? $search : '' }}">
@@ -168,19 +198,19 @@
 
                                         <thead>
                                             <tr>
-                                                <th>Family Name</th>
-                                                <th>Details</th>
+                                                <th>Full Name</th>
+                                                <th>Position</th>
                                                 <th width="10%">Actions</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            @forelse ($households as $household)
+                                            @forelse ($officials as $official)
                                                 <tr>
-                                                    <td>{{ $household->family_name }}</td>
-                                                    <td>{{ $household->details }}</td>
+                                                    <td>{{ $official->full_name }}</td>
+                                                    <td>{{ $official->position }}</td>
                                                     <td>
-                                                        {{-- <form action="{{ route('households.destroy', $household->id) }}" method="post" style="display: inline-block">
+                                                        {{-- <form action="{{ route('officials.destroy', $official->id) }}" method="post" style="display: inline-block">
                                                             @csrf
                                                             @method('DELETE')
 
@@ -189,17 +219,17 @@
                                                         </button>
                                                         </form> --}}
 
-                                                        <button type="button" onclick="editOrView('edit', {{ $household->id}})" class="btn btn-light btn-sm">
+                                                        <button type="button" onclick="editOrView('edit', {{ $official->id}})" class="btn btn-light btn-sm">
                                                             <i class="far fa-edit" ></i>
                                                         </button>
-                                                        <button type="button" onclick="editOrView('view',{{ $household->id}})" class="btn btn-light btn-sm">
+                                                        <button type="button" onclick="editOrView('view',{{ $official->id}})" class="btn btn-light btn-sm">
                                                             <i class="far fa-folder-open" ></i>
                                                         </button>
                                                     </td>
                                                 </tr>
                                             @empty
                                             <tr>
-                                                <td colspan="10" class="text-center">No households found!</td>
+                                                <td colspan="10" class="text-center">No officials found!</td>
                                             </tr>
                                             @endforelse
                                             {{-- {{dd($errors)}} --}}
@@ -207,7 +237,7 @@
                                     </table>
                                     <div class="row mt-3">
                                         <div class="col-12">
-                                            {{ $households ? $households->links() : ''  }}
+                                            {{ $officials ? $officials->links() : ''  }}
                                         </div>
                                         
                                     </div>
@@ -226,11 +256,11 @@
             console.log(errors);
             $(window).on('load', function() {
                 if(errors > 0){
-                    $('#household_modal').modal('show');
+                    $('#official_modal').modal('show');
                 }
             });
 
-            $('#household_modal').on('hidden.bs.modal', function (e) {
+            $('#official_modal').on('hidden.bs.modal', function (e) {
                 clearFields();
             })
 
@@ -271,16 +301,17 @@
         }
 
         function renderDataToDom(data){
-            $('#edit_form #family_name').val(data.family_name);
+            $('#edit_form #full_name').val(data.full_name);
+            $('#edit_form #position').val(data.position);
             $('#edit_form #details').val(data.details);
 
-            console.log($('#edit_form').attr('action','households/' + data.id ));
+            console.log($('#edit_form').attr('action','officials/' + data.id ));
 
-            $('#household_modal').modal('show');
+            $('#official_modal').modal('show');
         }
 
         const getData = async (id) => {
-            await axios.get(`${orgin}/households/${id}`)
+            await axios.get(`${orgin}/officials/${id}`)
                 .then(function(response) {
                     renderDataToDom(response.data);
                 })

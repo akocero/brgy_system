@@ -14,7 +14,7 @@
     @endif
     <div class="card">
         <div class="col-12 pt-3 px-3 d-flex justify-content-between align-items-center">
-            <h4 class="h4">Welcome {{$resident->name}}!</h4>
+            <h4 class="h4">Welcome {{$resident->first_name}}!</h4>
             <a style="float: right" href="{{ route('residents.index') }}" class="pr-2">
                 Back to residents
             </a>
@@ -247,4 +247,35 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+
+            disableInputs();
+
+        });
+
+
+        function disableInputs(){
+            const inputs = document.querySelectorAll('input');
+            const textarea = document.querySelectorAll('textarea');
+            const select = document.querySelectorAll('select');
+            // const inputs = document.querySelectorAll('');
+
+            inputs.forEach(input => {
+                input.setAttribute('disabled','true');
+            });
+
+            textarea.forEach(item => {
+                item.setAttribute('disabled','true');
+            });
+
+            select.forEach(item => {
+                item.setAttribute('disabled','true');
+            });
+        }
+
+    </script>
 @endsection

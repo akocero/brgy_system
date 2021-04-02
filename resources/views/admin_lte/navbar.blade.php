@@ -3,13 +3,23 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button" onclick="toggleSidebarDocked()" id="sidebar_docker">
+                <i class="fas fa-bars"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link btn btn-link" onclick="window.location.reload()">
+                <i class="fas fa-redo-alt pr-1"></i>
+                {{-- {{ auth()->user()->name }} --}}
+                Refresh
+            </button>
         </li>
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- Notifications Dropdown Menu -->
+    
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
