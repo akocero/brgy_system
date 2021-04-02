@@ -155,7 +155,10 @@
                                 @csrf
                                 <div class="row">
                                     <div class="form-group col-md-12">
-                                        <label for="search">Search (Hit enter)</label><a style="float: right" href="{{ route('households.index') }}">View all</a>
+                                        <label for="search">Search (Hit enter)</label>
+                                        <a style="float: right" href="{{ route('households.index') }}">
+                                            View all
+                                        </a>
                                         <input type="text" class="form-control" id="search" name="search" placeholder="Enter Family Name or Details..." required value="{{ $search ? $search : '' }}">
                                     </div>
                                 </div>
@@ -168,7 +171,7 @@
                                             <tr>
                                                 <th>Family Name</th>
                                                 <th>Details</th>
-                                                <th>Actions</th>
+                                                <th width="10%">Actions</th>
                                             </tr>
                                         </thead>
 
@@ -197,7 +200,7 @@
                                                 </tr>
                                             @empty
                                             <tr>
-                                                <td colspan="10" class="text-center">No cost allocation found!</td>
+                                                <td colspan="10" class="text-center">No households found!</td>
                                             </tr>
                                             @endforelse
                                             {{-- {{dd($errors)}} --}}
