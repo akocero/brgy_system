@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HouseholdController;
 use App\Http\Controllers\ResidentController;
@@ -26,6 +27,8 @@ Route::get('/main', function () {
 });
 
 Route::resource('residents', ResidentController::class)->except('destroy');
+Route::resource('businesses', BusinessController::class)->except('destroy');
+Route::view('residents/print/view', 'residents.view_print');
 Route::apiResource('households', HouseholdController::class)->except('destroy');
 // Route::get('households', [HouseholdController::class, 'index'])->name('households.index');
 
