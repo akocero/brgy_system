@@ -56,14 +56,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <script src="/js/app.js"></script>
 <script>
+  checkIfSidebarIsDocked();
   $(function () {
       $('[data-toggle="tooltip"]').tooltip()
-
+      
       checkActiveLinks();
   });
 
 
   function checkActiveLinks() {
+    
       var navlinks = document.querySelectorAll('.nav-treeview .nav-link');
       var url      = window.location.href;    
       navlinks.forEach(link => {
@@ -82,6 +84,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
         }
       });
   }
+
+  function checkIfSidebarIsDocked(){
+    localStorage.getItem("sidebar") ? $('body').addClass('sidebar-collapse') : $('body').removeClass('sidebar-collapse');
+  }
+
+
+  function toggleSidebarDocked(){
+    localStorage.getItem("sidebar") ? localStorage.removeItem('sidebar') : localStorage.setItem("sidebar", "collapse");
+  }
+
+  
 </script>
 @yield('scripts')
 </body>

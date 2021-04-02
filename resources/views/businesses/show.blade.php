@@ -165,7 +165,7 @@
                     </div>
 
                     <div class="col-12 mt-4">
-                        <h4 for="">Date Issued/Expiration</h4>
+                        <h4 for="" class="mb-0">Date Issued/Expiration</h4>
                         <hr>
                     </div>
 
@@ -201,12 +201,12 @@
     <script>
         $(document).ready(function() {
 
-            la();
+            disableInputs();
 
         });
 
 
-        function la(){
+        function disableInputs(){
             const inputs = document.querySelectorAll('input');
             const textarea = document.querySelectorAll('textarea');
             const select = document.querySelectorAll('select');

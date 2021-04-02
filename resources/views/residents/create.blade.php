@@ -5,9 +5,11 @@
 
 @section('content')
     <div class="card">
-        <div class="col-12 pt-3 px-3">
+        <div class="col-12 pt-3 px-3 d-flex justify-content-between align-items-center">
             <h4 class="h4">Add new resident</h4>
-            <hr class="pb-0 mb-0">
+            <a style="float: right" href="{{ route('residents.index') }}" class="pr-2">
+                Back to residents
+            </a>
         </div>
         
         <div class="card-body">

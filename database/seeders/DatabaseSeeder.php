@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\Household::factory(20)->create();
         \App\Models\Resident::factory(100)->create();
         \App\Models\Business::factory(50)->create();
+        \App\Models\Official::factory(10)->create();
     }
 }
