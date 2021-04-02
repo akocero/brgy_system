@@ -9,7 +9,7 @@
         {{-- <button type="button" class="btn btn-secondary btn-flat" data-toggle="modal" data-target="#exampleModal">
                 Create Data
         </button> --}}
-        <a href="{{ route('residents.create') }}" class="btn btn-flat btn-secondary">Add Resident</a>
+        <a href="{{ route('residents.create') }}" class="btn btn-flat btn-secondary">New Resident</a>
     </div>
     <div class="col-12">
         <hr class="pb-0 mb-0">
@@ -34,7 +34,6 @@
             <table class="table table-sm table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
                         <th scope="col">Full Name</th>
                         <th scope="col">Email</th>
                         <th width="10%">Actions</th>
@@ -43,7 +42,6 @@
                 <tbody>
                     @forelse ($residents as $resident)
                         <tr>
-                            <td>{{ $resident->id }}</td>
                             <td>
                                 {{ $resident->last_name }}, {{ $resident->first_name }}  {{ $resident->middle_name }}  {{ $resident->suffix }}
                             </td>
@@ -52,9 +50,9 @@
                                 <a class="btn btn-sm btn-regular" href="{{ route('residents.edit', $resident->id) }}">
                                     <i class="far fa-edit"></i>
                                 </a>
-                                <button class="btn btn-sm btn-regular">
+                                <a class="btn btn-sm btn-regular" href="{{ route('residents.show', $resident->id) }}">
                                     <i class="far fa-folder-open"></i>
-                                </button>
+                                </a>
                                 {{-- <button class="btn btn-sm btn-regular">
                                     <i class="far fa-trash-alt"></i>
                                 </button> --}}

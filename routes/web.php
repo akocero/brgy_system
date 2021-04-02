@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HouseholdController;
 use App\Http\Controllers\ResidentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,8 +25,10 @@ Route::get('/main', function () {
     return view('admin_lte.starter');
 });
 
-Route::resource('residents', ResidentController::class);
-// Route::post('residents/search', [ResidentController::class, 'search'])->name('residents.search');
+Route::resource('residents', ResidentController::class)->except('destroy');
+Route::apiResource('households', HouseholdController::class)->except('destroy');
+// Route::get('households', [HouseholdController::class, 'index'])->name('households.index');
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

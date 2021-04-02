@@ -9,6 +9,8 @@ class Household extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function residents()
     {
         return $this->hasMany(Resident::class);
