@@ -20,9 +20,6 @@
                 Back to residents
             </a>
         </div>
-        <div class="col-12">
-            <hr class="pb-0 mb-0">
-        </div>
         
         <div class="card-body">
             <form action="#" method="POST">
@@ -45,7 +42,6 @@
                     </li>
                     
                 </ul>
-                <hr>
                 <div class="tab-content" id="pills-tabContent">
                     {{-- Personal info tab  --}}
 
@@ -330,7 +326,7 @@
 
                             <div class="form-group col-md-3">
                                 <label for="household_id">Household (Optional)</label>
-                                <input type="text" class="form-control @error('household_id') {{ 'is-invalid' }}@enderror" id="household_id" name="household_id" placeholder="Type Firstname..." value="{{ $resident->household->name }}">
+                                <input type="text" class="form-control @error('household_id') {{ 'is-invalid' }}@enderror" id="household_id" name="household_id" placeholder="Type Firstname..." value="{{ $resident->household->name ?? 'N/A' }}">
 
                                 @error('household_id')
                                     <small class="text-danger">
@@ -428,39 +424,51 @@
             </form>
         </div>
     </div>
-
+    
     <div class="card">
-        <div class="col-12 pt-3 px-3">
-            <h4 class="h4">{{$resident->household->name}}</h4>
-            <hr class="pb-0 mb-0">
-        </div>
-        
-        <div class="card-body">
-            <div class="table-responsive">   
-                <table class="table table-sm table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Full Name</th>
-                            <th scope="col">Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($resident->household->residents as $resident)
-                            <tr>
-                                <td>
-                                    {{ $resident->last_name }}, {{ $resident->first_name }}  {{ $resident->middle_name }}  {{ $resident->suffix }}
-                                </td>
-                                <td>{{ $resident->email }}</td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="4">No Resident Found!</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+        @if ($resident->household)
+            <div class="col-12 pt-3 px-3">
+                <h4 class="h4">{{$resident->household->name}}</h4>
+                <hr class="pb-0 mb-0">
             </div>
-        </div>
+            
+            <div class="card-body">
+                <div class="table-responsive">   
+                    <table class="table table-sm table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($resident->household->residents as $resident)
+                                <tr>
+                                    <td>
+                                        {{ $resident->last_name }}, {{ $resident->first_name }}  {{ $resident->middle_name }}  {{ $resident->suffix }}
+                                    </td>
+                                    <td>{{ $resident->email }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4">No Resident Found!</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        @else
+            <div class="col-12 pt-3 px-3">
+                <h4 class="h4">
+                    No household found! 
+                </h4>
+                <a href="{{ route('residents.edit', $resident->id) }}" class="pr-2">
+                    Add household
+                </a>
+                <hr class="pb-0 mb-0">
+            </div>
+        @endif
     </div>
 @endsection
 

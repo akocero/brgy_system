@@ -62456,3 +62456,20 @@ label {
   right: -2px;
   font-size: 0.5rem;
 }
+
+.card form .nav-pills .nav-link.active {
+  margin-bottom: -1.5px;
+  color: #343a40;
+  background-color: none !important;
+  border-bottom: 2px solid #343a40;
+  border-radius: 0;
+  padding-bottom: 1rem;
+}
+
+.card form .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color: white;
+}
+
+ul#pills-tab {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}

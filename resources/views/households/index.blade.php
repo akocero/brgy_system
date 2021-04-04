@@ -34,14 +34,14 @@ aria-hidden="true">
 
                             <input
                                 type="text"
-                                class="form-control @error('family_name') {{ 'is-invalid' }}@enderror"
-                                name="family_name"
-                                id="family_name"
-                                value="{{ old('family_name') }}"
-                                placeholder="Type family_name..."
+                                class="form-control @error('name') {{ 'is-invalid' }}@enderror"
+                                name="name"
+                                id="name"
+                                value="{{ old('name') }}"
+                                placeholder="Type name..."
                                 required>
 
-                            @error('family_name')
+                            @error('name')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
@@ -77,14 +77,14 @@ aria-hidden="true">
 
                             <input
                                 type="text"
-                                class="form-control @error('family_name') {{ 'is-invalid' }}@enderror"
-                                name="family_name"
-                                id="edit_family_name"
-                                value="{{ old('family_name') }}"
-                                placeholder="Type family_name..."
+                                class="form-control @error('name') {{ 'is-invalid' }}@enderror"
+                                name="name"
+                                id="edit_name"
+                                value="{{ old('name') }}"
+                                placeholder="Type name..."
                                 required>
 
-                            @error('family_name')
+                            @error('name')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
@@ -283,7 +283,7 @@ aria-hidden="true">
         }
 
         function renderDataToDom(data){
-            $('#edit_form #edit_family_name').val(data.family_name);
+            $('#edit_form #edit_name').val(data.name);
             $('#edit_form #edit_details').val(data.details);
 
             console.log($('#edit_form').attr('action','households/' + data.id ));

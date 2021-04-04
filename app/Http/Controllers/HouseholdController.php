@@ -56,7 +56,7 @@ class HouseholdController extends Controller
     {
         // dd(request()->household_id);
         return request()->validate([
-            'family_name' => 'required',
+            'name' => 'required',
             'details' => '',
         ]);
     }
