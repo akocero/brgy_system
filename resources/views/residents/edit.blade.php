@@ -35,7 +35,6 @@
                     </li>
                     
                 </ul>
-                <hr>
                 <div class="tab-content" id="pills-tabContent">
                     {{-- Personal info tab  --}}
 

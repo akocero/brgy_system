@@ -58,8 +58,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
   checkIfSidebarIsDocked();
   $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-      
+      $('[data-toggle="tooltip"]').tooltip();
+
+      $('a[data-toggle="pill"]').on('show.bs.tab', function(e) {
+        // console.log('sdsd');
+        localStorage.setItem('activeTab', $(e.target).attr('href'));
+      });
+
+      var activeTab = localStorage.getItem('activeTab');
+
+      if(activeTab){
+          $('#pills-tab a[href="' + activeTab + '"]').tab('show');
+      }
+        
       checkActiveLinks();
   });
 
@@ -88,6 +99,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   function toggleSidebarDocked(){
     localStorage.getItem("sidebar") ? localStorage.removeItem('sidebar') : localStorage.setItem("sidebar", "collapse");
   }
+
+  
 
   
 </script>
