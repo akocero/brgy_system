@@ -10,9 +10,4 @@ class Reporter extends Model
     use HasFactory;
 
     protected $guarded = [];
-
-    public function blotter()
-    {
-        return $this->belongsTo(Blotter::class);
-    }
 }
