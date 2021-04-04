@@ -5,8 +5,13 @@
 
 @section('content')
     <div class="card">
-        <div class="col-12 pt-3 px-3">
-            <h4 class="h4">{{$business->name}} details!</h4>
+        <div class="col-12 pt-3 px-3 d-flex justify-content-between align-items-center">
+            <h4 class="h4">{{$business->name}}</h4>
+            <a style="float: right" href="{{ route('businesses.index') }}" class="pr-2">
+                Back to businesses
+            </a>
+        </div>
+        <div class="col-12">
             <hr class="pb-0 mb-0">
         </div>
         
@@ -179,7 +184,7 @@
                     </div>
 
                     <div class="col-md-12">
-                        <input type="submit" value="submit" class="btn btn-success"> 
+                        <input type="submit" value="Save changes" class="btn btn-success"> 
                     </div>
                     
 

@@ -15,15 +15,15 @@ class HouseholdController extends Controller
         $search = '';
 
         if (!is_null($request->search)) {
-            $households = Household::where('family_name', 'like', '%' . request()->search . '%')
+            $households = Household::where('name', 'like', '%' . request()->search . '%')
                 ->orWhere('details', 'like', '%' . request()->search . '%')
-                ->orderBy('family_name')
+                ->orderBy('name')
                 ->paginate(10);
             $households->appends(['search' => $request->search]);
 
             $search = request()->search;
         } else {
-            $households = Household::orderBy('family_name')->paginate(10);
+            $households = Household::orderBy('name')->paginate(10);
         }
 
         return view('households.index', compact('households', 'search'));

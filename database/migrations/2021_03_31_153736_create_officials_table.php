@@ -15,9 +15,17 @@ class CreateOfficialsTable extends Migration
     {
         Schema::create('officials', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('middle_name')->nullable();
+            $table->string('suffix')->nullable();
+            $table->string('gender');
+            $table->string('mobile_no')->nullable();
             $table->string('position');
-            $table->text('details')->nullable();
+            $table->string('committee')->nullable();
+            $table->tinyInteger('rank_no')->nullable();
+            $table->tinyInteger('active')->default(1);
+            $table->text('remarks')->nullable();
             $table->timestamps();
         });
     }

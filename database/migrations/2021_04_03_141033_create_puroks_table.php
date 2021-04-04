@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHouseholdsTable extends Migration
+class CreatePuroksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateHouseholdsTable extends Migration
      */
     public function up()
     {
-        Schema::create('households', function (Blueprint $table) {
+        Schema::create('puroks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('details')->nullable();
-            $table->tinyInteger('active')->default(1);
+            $table->string('details');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateHouseholdsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('households');
+        Schema::dropIfExists('puroks');
     }
 }
