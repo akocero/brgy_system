@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HouseholdController;
 use App\Http\Controllers\OfficialController;
 use App\Http\Controllers\ResidentController;
+use App\Http\Controllers\ResolutionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,7 @@ Route::get('/main', function () {
 
 Route::resource('residents', ResidentController::class)->except('destroy');
 Route::resource('businesses', BusinessController::class)->except('destroy');
+Route::resource('resolutions', ResolutionController::class)->except('destroy');
 Route::view('residents/print/view', 'residents.view_print');
 Route::apiResource('households', HouseholdController::class)->except('destroy');
 Route::apiResource('officials', OfficialController::class)->except('destroy');
