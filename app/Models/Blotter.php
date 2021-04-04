@@ -13,21 +13,21 @@ class Blotter extends Model
 
     public function victim()
     {
-        return $this->hasOne(Victim::class);
+        return $this->belongsTo(Victim::class);
     }
 
     public function suspect()
     {
-        return $this->hasOne(Suspect::class);
+        return $this->belongsTo(Suspect::class);
     }
 
     public function reporter()
     {
-        return $this->hasOne(Reporter::class);
+        return $this->belongsTo(Reporter::class);
     }
 
     public function childrenInvolved()
     {
-        return $this->hasOne(ChildrenInvolved::class);
+        return $this->belongsTo(ChildrenInvolved::class);
     }
 }

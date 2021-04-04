@@ -1,49 +1,94 @@
 @extends('layouts.main')
 
 
-@section("title","Edit Business")
+@section("title","Edit Blotter")
 
 @section('content')
     <div class="card">
         <div class="col-12 pt-4 px-4 d-flex justify-content-between align-items-center">
-            <h4 class="h4">{{$business->name}}</h4>
-            <a style="float: right" href="{{ route('businesses.index') }}" class="pr-2">
-                Back to businesses
+            <h4 class="h4">{{$blotter->incident_type}} details</h4>
+            <a style="float: right" href="{{ route('blotters.index') }}" class="pr-2">
+                View all blotter
             </a>
         </div>
-
+        
         <div class="card-body">
-            <form action="{{ route('businesses.update', $business->id) }}" method="POST">
+
+
+            <form action="{{ route('blotters.update', $blotter->id) }}" method="POST">
                 @csrf
                 @method('PATCH')
+                {{-- Tabs  --}}
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-
                     <li class="nav-item">
-                        <a class="nav-link active" id="pills-business-info-tab" data-toggle="pill" href="#pills-business-info" role="tab" aria-controls="pills-business-info" aria-selected="true">Business Info</a>
+                        <a class="nav-link active" id="pills-incident-tab" data-toggle="pill" href="#pills-incident" role="tab" aria-controls="pills-incident" aria-selected="true">Incident Details</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" id="pills-owner-info-tab" data-toggle="pill" href="#pills-owner-info" role="tab" aria-controls="pills-owner-info" aria-selected="false">Owner Info</a>
+                        <a class="nav-link" id="pills-reporter-data-tab" data-toggle="pill" href="#pills-reporter-data" role="tab" aria-controls="pills-reporter-data" aria-selected="true">Report Person</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" id="pills-date-info-tab" data-toggle="pill" href="#pills-date-info" role="tab" aria-controls="pills-date-info" aria-selected="false">Date Issued/Expiration</a>
+                        <a class="nav-link" id="pills-victim-data-tab" data-toggle="pill" href="#pills-victim-data" role="tab" aria-controls="pills-victim-data" aria-selected="false">Victim info</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-suspect-data-tab" data-toggle="pill" href="#pills-suspect-data" role="tab" aria-controls="pills-suspect-data" aria-selected="false">Suspect Description</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-children-envolved-tab" data-toggle="pill" href="#pills-children-envolved" role="tab" aria-controls="pills-children-envolved" aria-selected="false">Children Envolved</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-documents-tab" data-toggle="pill" href="#pills-documents" role="tab" aria-controls="pills-documents" aria-selected="false">Documents Attached</a>
+                    </li>
                 </ul>
                 {{-- End Tabs  --}}
                 <div class="tab-content" id="pills-tabContent">
 
-                    {{-- Business info  --}}
-                    <div class="tab-pane fade show active" id="pills-business-info" role="tabpanel" aria-labelledby="pills-business-info-tab">
+                    {{-- Reporter info  --}}
+                    <div class="tab-pane fade " id="pills-reporter-data" role="tabpanel" aria-labelledby="pills-reporter-data-tab">
                         
                         <div class="row">
 
-                            <div class="form-group col-md-4">
-                                <label for="name">Business Name</label>&nbsp;<small class="text-danger">*</small>
-                                <input type="text" class="form-control @error('name') {{ 'is-invalid' }}@enderror" id="name" name="name" placeholder="Type Lastname..." value="{{ $business->name }}">
+                            <div class="form-group col-md-6">
+                                <label for="r_full_name">Full Name</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('r_full_name') {{ 'is-invalid' }}@enderror" id="r_full_name" name="r_full_name" placeholder="Type Last_name..." value="{{ $blotter->reporter->full_name }}">
 
-                                @error('name')
+                                @error('r_full_name')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                             <div class="form-group col-md-2">
+                                <label for="r_citizenship">Citizenship</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('r_citizenship') {{ 'is-invalid' }}@enderror" id="r_citizenship" name="r_citizenship" placeholder="Type Last_name..." value="{{ $blotter->reporter->citizenship  }}">
+
+                                @error('r_citizenship')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-2">
+                                <label for="r_gender">Gender</label>
+
+                                <select class="custom-select  @error('r_gender') {{ 'is-invalid' }}@enderror"
+                                        name="r_gender" id="r_gender">
+                                    <option value="">Choose ...</option>
+                                    <option value="male" {{ $blotter->reporter->gender == 'male' ? 'selected' : ''}}>Male</option>
+                                    <option value="female" {{ $blotter->reporter->gender == 'female' ? 'selected' : ''}}>Female</option>
+                                </select>
+
+                                @error('r_gender')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-2">
+                                <label for="r_date_of_birth">Date of Birth</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="date" class="form-control @error('r_date_of_birth') {{ 'is-invalid' }}@enderror" id="r_date_of_birth" name="r_date_of_birth" placeholder="Type Last_name..." value="{{ $blotter->reporter->date_of_birth }}">
+
+                                @error('r_date_of_birth')
                                     <small class="text-danger">
                                     {{ $message }}
                                     </small>
@@ -51,109 +96,32 @@
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="type">Business Type</label>
+                                <label for="r_id_details">ID Details</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('r_id_details') {{ 'is-invalid' }}@enderror" id="r_id_details" name="r_id_details" placeholder="Ex. Postal ID - 123-1234-123" value="{{ $blotter->reporter->id_details }}">
 
-                                <select class="custom-select  @error('type') {{ 'is-invalid' }}@enderror"
-                                        name="type" id="type">
-                                    <option value="">Choose ...</option>
-                                    <option value="food" {{ $business->type == 'food' ? 'selected' : ''}}>Food</option>
-                                </select>
-
-                                @error('type')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="operator">Operator Name</label>&nbsp;<small class="text-danger">*</small>
-                                <input type="text" class="form-control @error('operator') {{ 'is-invalid' }}@enderror" id="operator" name="operator" placeholder="Type Firstname..." value="{{ $business->operator  }}">
-
-                                @error('operator')
+                                @error('r_id_details')
                                     <small class="text-danger">
-                                        {{ $message }}
-                                    </small>
-                                @enderror
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="location">Location in Brgy</label>
-                                <input type="text" class="form-control @error('location') {{ 'is-invalid' }}@enderror" id="location" name="location" placeholder="Type Firstname..." value="{{ $business->location  }}">
-
-                                @error('location')
-                                    <small class="text-danger">
-                                        {{ $message }}
-                                    </small>
-                                @enderror
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="address">Address</label>
-                                <textarea type="text" class="form-control @error('address') {{ 'is-invalid' }}@enderror" id="address" name="address" placeholder="Type Firstname..." value="">{{ $business->address  }}</textarea>
-
-                                @error('address')
-                                    <small class="text-danger">
-                                        {{ $message }}
+                                    {{ $message }}
                                     </small>
                                 @enderror
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="email">Email (Optional)</label>
-                                <input type="email" class="form-control @error('email') {{ 'is-invalid' }}@enderror" id="email" name="email" placeholder="Type Firstname..." value="{{ $business->email  }}">
+                                <label for="r_email">Email</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="email" class="form-control @error('r_email') {{ 'is-invalid' }}@enderror" id="r_email" name="r_email" placeholder="Type Last_name..." value="{{ $blotter->reporter->email }}">
 
-                                @error('email')
+                                @error('r_email')
                                     <small class="text-danger">
-                                        {{ $message }}
+                                    {{ $message }}
                                     </small>
                                 @enderror
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="mobile_no">Mobile no. (Optional)</label>
-                                <input type="text" class="form-control @error('mobile_no') {{ 'is-invalid' }}@enderror" id="mobile_no" name="mobile_no" placeholder="Type Firstname..." value="{{ $business->mobile_no  }}">
+                                <label for="r_contact_no">Contact No.</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('r_contact_no') {{ 'is-invalid' }}@enderror" id="r_contact_no" name="r_contact_no" placeholder="Type Firstname..." value="{{ $blotter->reporter->contact_no }}">
 
-                                @error('mobile_no')
-                                    <small class="text-danger">
-                                        {{ $message }}
-                                    </small>
-                                @enderror
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="landline">Landline (Optional)</label>
-                                <input type="text" class="form-control @error('landline') {{ 'is-invalid' }}@enderror" id="landline" name="landline" placeholder="Ex. landline@example.com " value="{{ $business->landline  }}">
-
-                                @error('landline')
-                                    <small class="text-danger">
-                                        {{ $message }}
-                                    </small>
-                                @enderror
-                            </div>
-
-                        </div>
-
-                    </div>
-                    {{-- End Business info  --}}
-                    {{-- Owner Business info  --}}
-                    <div class="tab-pane fade" id="pills-owner-info" role="tabpanel" aria-labelledby="pills-owner-info-tab">
-                        
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <label for="owner_full_name">Owner Full Name (Optional)</label>
-                                <input type="text" class="form-control @error('owner_full_name') {{ 'is-invalid' }}@enderror" id="owner_full_name" name="owner_full_name" placeholder="Type Firstname..." value="{{ $business->owner_full_name   }}">
-
-                                @error('owner_full_name')
-                                    <small class="text-danger">
-                                        {{ $message }}
-                                    </small>
-                                @enderror
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="owner_address">Owner Address</label>
-                                <textarea type="text" class="form-control @error('owner_address') {{ 'is-invalid' }}@enderror" id="owner_address" name="owner_address" placeholder="Type Firstname..." value="">{{ $business->owner_address }}</textarea>
-
-                                @error('owner_address')
+                                @error('r_contact_no')
                                     <small class="text-danger">
                                         {{ $message }}
                                     </small>
@@ -161,62 +129,451 @@
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="owner_details">Owner Details</label>
-                                <textarea type="text" class="form-control @error('owner_details') {{ 'is-invalid' }}@enderror" id="owner_details" name="owner_details" placeholder="Type Firstname..." value="">{{ $business->owner_details  }}</textarea>
+                                <label for="r_address">Address</label>
+                                <textarea type="text" class="form-control @error('r_address') {{ 'is-invalid' }}@enderror" id="r_address" name="r_address" placeholder="Type Firstname..." value="">{{ $blotter->reporter->address }}</textarea>
 
-                                @error('owner_details')
+                                @error('r_address')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>    
+
+                        </div>
+
+                    </div>
+                    {{-- End Reporter info  --}}
+
+                    {{-- Victim info  --}}
+                    <div class="tab-pane fade" id="pills-victim-data" role="tabpanel" aria-labelledby="pills-victim-data-tab">
+                        
+                        <div class="row">
+
+                            <div class="form-group col-md-6">
+                                <label for="v_full_name">Full Name</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('v_full_name') {{ 'is-invalid' }}@enderror" id="v_full_name" name="v_full_name" placeholder="Type Last_name..." value="{{ $blotter->victim->full_name  }}">
+
+                                @error('v_full_name')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-2">
+                                <label for="v_citizenship">Citizenship</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('v_citizenship') {{ 'is-invalid' }}@enderror" id="v_citizenship" name="v_citizenship" placeholder="Type Last_name..." value="{{ $blotter->victim->citizenship  }}">
+
+                                @error('v_citizenship')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-2">
+                                <label for="v_gender">Gender</label>
+
+                                <select class="custom-select  @error('v_gender') {{ 'is-invalid' }}@enderror"
+                                        name="v_gender" id="v_gender">
+                                    <option value="">Choose ...</option>
+                                    <option value="male" {{ $blotter->victim->gender  == 'male' ? 'selected' : ''}}>Male</option>
+                                    <option value="female" {{ $blotter->victim->gender  == 'female' ? 'selected' : ''}}>Female</option>
+                                </select>
+
+                                @error('v_gender')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-2">
+                                <label for="v_date_of_birth">Date of Birth</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="date" class="form-control @error('v_date_of_birth') {{ 'is-invalid' }}@enderror" id="v_date_of_birth" name="v_date_of_birth" placeholder="Type Last_name..." value="{{ $blotter->victim->date_of_birth  }}">
+
+                                @error('v_date_of_birth')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            
+
+                            <div class="form-group col-md-4">
+                                <label for="v_id_details">ID Details</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('v_id_details') {{ 'is-invalid' }}@enderror" id="v_id_details" name="v_id_details" placeholder="Ex. Postal ID - 123-1234-123" value="{{ $blotter->victim->id_details  }}">
+
+                                @error('v_id_details')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="v_email">Email</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="email" class="form-control @error('v_email') {{ 'is-invalid' }}@enderror" id="v_email" name="v_email" placeholder="Type Last_name..." value="{{ $blotter->victim->email  }}">
+
+                                @error('v_email')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="v_contact_no">Contact No.</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('v_contact_no') {{ 'is-invalid' }}@enderror" id="v_contact_no" name="v_contact_no" placeholder="Type Firstname..." value="{{ $blotter->victim->contact_no  }}">
+
+                                @error('v_contact_no')
                                     <small class="text-danger">
                                         {{ $message }}
                                     </small>
                                 @enderror
                             </div>
 
+                            <div class="form-group col-md-12">
+                                <label for="v_address">Address</label>
+                                <textarea type="text" class="form-control @error('v_address') {{ 'is-invalid' }}@enderror" id="v_address" name="v_address" placeholder="Type Firstname..." value="">{{ $blotter->victim->address  }}</textarea>
+
+                                @error('v_address')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>    
+
                         </div>
 
                     </div>
-                    {{-- End Owner Business info  --}}
-                    {{-- Issued Dates info  --}}
-                    <div class="tab-pane fade" id="pills-date-info" role="tabpanel" aria-labelledby="pills-date-info-tab">
+                    {{-- End Victim info  --}}
 
+                    {{-- Suspect info  --}}
+                    <div class="tab-pane fade" id="pills-suspect-data" role="tabpanel" aria-labelledby="pills-suspect-data-tab">
+                        
+                        <div class="row">
+
+                            <div class="form-group col-md-6">
+                                <label for="s_full_name">Full Name (Alias/Nickname)</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('s_full_name') {{ 'is-invalid' }}@enderror" id="s_full_name" name="s_full_name" placeholder="Ex. John Doe (Big Foot)" value="{{ $blotter->suspect->full_name }}">
+
+                                @error('s_full_name')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                             
+
+                            <div class="form-group col-md-3">
+                                <label for="s_gender">Gender</label>
+
+                                <select class="custom-select  @error('s_gender') {{ 'is-invalid' }}@enderror"
+                                        name="s_gender" id="s_gender">
+                                    <option value="">Choose ...</option>
+                                    <option value="male" {{ $blotter->suspect->gender == 'male' ? 'selected' : ''}}>Male</option>
+                                    <option value="female" {{ $blotter->suspect->gender == 'female' ? 'selected' : ''}}>Female</option>
+                                </select>
+
+                                @error('s_gender')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="s_date_of_birth">Date of Birth</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="date" class="form-control @error('s_date_of_birth') {{ 'is-invalid' }}@enderror" id="s_date_of_birth" name="s_date_of_birth" placeholder="Type Last_name..." value="{{ $blotter->suspect->date_of_birth }}">
+
+                                @error('s_date_of_birth')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="s_citizenship">Citizenship</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('s_citizenship') {{ 'is-invalid' }}@enderror" id="s_citizenship" name="s_citizenship" placeholder="Type Last_name..." value="{{ $blotter->suspect->citizenship }}">
+
+                                @error('s_citizenship')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="s_email">Email</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="email" class="form-control @error('s_email') {{ 'is-invalid' }}@enderror" id="s_email" name="s_email" placeholder="Type Last_name..." value="{{ $blotter->suspect->email }}">
+
+                                @error('s_email')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="s_contact_no">Contact No.</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('s_contact_no') {{ 'is-invalid' }}@enderror" id="s_contact_no" name="s_contact_no" placeholder="Type Firstname..." value="{{ $blotter->suspect->contact_no }}">
+
+                                @error('s_contact_no')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="s_address">Address</label>
+                                <textarea type="text" class="form-control @error('s_address') {{ 'is-invalid' }}@enderror" id="s_address" name="s_address" placeholder="Type Firstname..." value="">{{ $blotter->suspect->address }}</textarea>
+
+                                @error('s_address')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div> 
+                            
+                            <div class="form-group col-md-6">
+                                <label for="s_work_address">Work Address</label>
+                                <textarea type="text" class="form-control @error('s_work_address') {{ 'is-invalid' }}@enderror" id="s_work_address" name="s_work_address" placeholder="Type Firstname..." value="">{{ $blotter->suspect->work_address }}</textarea>
+
+                                @error('s_work_address')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+                            
+                            <div class="form-group col-md-4">
+                                <label for="s_with_previous_criminal_records">With Previous Criminal Records</label>
+
+                                <select class="custom-select  @error('s_with_previous_criminal_records') {{ 'is-invalid' }}@enderror"
+                                        name="s_with_previous_criminal_records" id="s_with_previous_criminal_records">
+                                    <option value="">Choose ...</option>
+                                    <option value="yes" {{ $blotter->suspect->with_previous_criminal_records == 'yes' ? 'selected' : ''}}>Yes</option>
+                                    <option value="no" {{ $blotter->suspect->with_previous_criminal_records == 'no' ? 'selected' : ''}}>No</option>
+                                </select>
+
+                                @error('s_with_previous_criminal_records')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="s_previous_case_status">Previous Case Status</label>
+
+                                <select class="custom-select  @error('s_previous_case_status') {{ 'is-invalid' }}@enderror"
+                                        name="s_previous_case_status" id="s_previous_case_status">
+                                    <option value="">Choose ...</option>
+                                    <option value="ongoing" {{ $blotter->suspect->previous_case_status == 'ongoing' ? 'selected' : ''}}>Ongoing</option>
+                                    <option value="solved" {{ $blotter->suspect->previous_case_status == 'solved' ? 'selected' : ''}}>Solved</option>
+                                </select>
+
+                                @error('s_previous_case_status')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            {{-- note this --}}
+                            <div class="form-group col-md-4">
+                                <label for="s_relation_to_victim">Relationship to Victim</label>
+                                <input type="text" class="form-control @error('s_relation_to_victim') {{ 'is-invalid' }}@enderror" id="s_relation_to_victim" name="s_relation_to_victim" placeholder="Type Firstname..." value="{{ $blotter->suspect->relation_to_victim }}">
+
+                                @error('s_relation_to_victim')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-7">
+                                <label for="s_description">Suspect Description</label>
+                                <textarea type="text" class="form-control @error('s_description') {{ 'is-invalid' }}@enderror" id="s_description" name="s_description" placeholder="Ex. Complextion, Eye Color, Age, Hair, Beard, etc..." value="">{{ $blotter->suspect->description }}</textarea>
+
+                                @error('s_description')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div> 
+
+                            <div class="form-group col-md-5">
+                                <label for="s_remarks">Notes/Remarks</label>
+                                <textarea type="text" class="form-control @error('s_remarks') {{ 'is-invalid' }}@enderror" id="s_remarks" name="s_remarks" placeholder="Ex. Please check the documents attached..." value="">{{ $blotter->suspect->remarks }}</textarea>
+
+                                @error('s_remarks')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div> 
+                            
+
+                        </div>
+
+                    </div>
+                    {{-- End Suspect info  --}}
+                    <div class="tab-pane fade" id="pills-children-envolved" role="tabpanel" aria-labelledby="pills-children-envolved-tab">
+                        
                         <div class="row">
 
                             <div class="form-group col-md-4">
-                                <label for="permit_issued_date">Permit Issued Date (Optional)</label>
-                                <input type="date" class="form-control @error('permit_issued_date') {{ 'is-invalid' }}@enderror" id="permit_issued_date" name="permit_issued_date" value="{{ $business->permit_issued_date  }}">
+                                <label for="ce_guardian_name">Guardian Name </label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('ce_guardian_name') {{ 'is-invalid' }}@enderror" id="ce_guardian_name" name="ce_guardian_name" placeholder="Ex. John Doe" value="{{ $blotter->childrenInvolved->guardian_name ?? '' }}">
 
-                                @error('permit_issued_date')
+                                @error('ce_guardian_name')
                                     <small class="text-danger">
-                                        {{ $message }}
+                                    {{ $message }}
                                     </small>
                                 @enderror
                             </div>
 
-                            <div class="form-group col-md-4">
-                                <label for="permit_expiration_date">Permit Expiration Date(Optional)</label>
-                                <input type="date" class="form-control @error('permit_expiration_date') {{ 'is-invalid' }}@enderror" id="permit_expiration_date" name="permit_expiration_date" value="{{ $business->permit_expiration_date }}">
+                            <div class="form-group col-md-3">
+                                <label for="ce_contact_no">Contact No.</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('ce_contact_no') {{ 'is-invalid' }}@enderror" id="ce_contact_no" name="ce_contact_no" placeholder="Ex. John Doe" value="{{ $blotter->childrenInvolved->contact_no ?? '' }}">
 
-                                @error('permit_expiration_date')
+                                @error('ce_contact_no')
                                     <small class="text-danger">
-                                        {{ $message }}
+                                    {{ $message }}
                                     </small>
                                 @enderror
                             </div>
 
+                            <div class="form-group col-md-5">
+                                <label for="ce_guardian_address">Address</label>
+                                <textarea type="text" class="form-control @error('ce_guardian_address') {{ 'is-invalid' }}@enderror" id="ce_guardian_address" name="ce_guardian_address" placeholder="Type Firstname..." value="">{{ $blotter->childrenInvolved->guardian_address ?? '' }}</textarea>
+
+                                @error('ce_guardian_address')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div> 
+                            
+                            <div class="form-group col-md-7">
+                                <label for="ce_diversion">Diversion</label>
+                                <textarea type="text" class="form-control @error('ce_diversion') {{ 'is-invalid' }}@enderror" id="ce_diversion" name="ce_diversion" placeholder="Type Firstname..." value="">{{ $blotter->childrenInvolved->diversion ?? '' }}</textarea>
+
+                                @error('ce_diversion')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div> 
+
+                            <div class="form-group col-md-5">
+                                <label for="ce_remarks">Notes/Remarks</label>
+                                <textarea type="text" class="form-control @error('ce_remarks') {{ 'is-invalid' }}@enderror" id="ce_remarks" name="ce_remarks" placeholder="Type Firstname..." value="">{{ $blotter->childrenInvolved->remarks  ?? '' }}</textarea>
+
+                                @error('ce_remarks')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div> 
+                            
                         </div>
                         
                     </div>
-                    {{-- End Issued Dates info  --}}
+
+
+                    <div class="tab-pane fade" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                documents
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane fade show active" id="pills-incident" role="tabpanel" aria-labelledby="pills-incident-tab">
+
+                        <div class="row">
+
+                            <div class="form-group col-md-3">
+                                <label for="blotter_entry_no">Blotter Entry No </label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('blotter_entry_no') {{ 'is-invalid' }}@enderror" id="blotter_entry_no" name="blotter_entry_no" placeholder="Ex. John Doe" value="{{ $blotter->blotter_entry_no }}">
+
+                                @error('blotter_entry_no')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="reported_date_time">Reported Date</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="datetime-local" class="form-control @error('reported_date_time') {{ 'is-invalid' }}@enderror" id="reported_date_time" name="reported_date_time" placeholder="Ex. John Doe" value="{{  date('Y-m-d\TH:i:s', strtotime($blotter->reported_date_time )) }}">
+
+                                @error('reported_date_time')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="incident_type">Incident Type </label>&nbsp;<small class="text-danger">*</small>
+                                <input type="text" class="form-control @error('incident_type') {{ 'is-invalid' }}@enderror" id="incident_type" name="incident_type" placeholder="Ex. John Doe" value="{{ $blotter->incident_type }}">
+
+                                @error('incident_type')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="incident_date_time">Incident Date and Time </label>&nbsp;<small class="text-danger">*</small>
+                                <input type="datetime-local" class="form-control @error('incident_date_time') {{ 'is-invalid' }}@enderror" id="incident_date_time" name="incident_date_time" placeholder="Ex. John Doe" value="{{ date('Y-m-d\TH:i:s', strtotime($blotter->incident_date_time)) }}">
+{{-- date('Y-m-d\TH:i:s', strtotime($blotter->incident_date_time))  --}}
+                                @error('incident_date_time')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-5">
+                                <label for="incident_location">Incident Location</label>
+                                <textarea type="text" class="form-control @error('incident_location') {{ 'is-invalid' }}@enderror" id="incident_location" name="incident_location" placeholder="Type Firstname..." value="">{{ $blotter->incident_location }}</textarea>
+
+                                @error('incident_location')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div> 
+
+                            <div class="form-group col-md-7">
+                                <label for="incident_details">Incident Details</label>
+                                <textarea type="text" class="form-control @error('incident_details') {{ 'is-invalid' }}@enderror" id="incident_details" name="incident_details" placeholder="Type Firstname..." value="">{{ $blotter->incident_details }}</textarea>
+
+                                @error('incident_details')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div> 
+                            
+                            
+                        </div>
+
+                    </div>
 
                 </div>
                 <hr>
                 <div class="row">
+
                     <div class="col-md-12">
-
-                        <input type="submit" value="Save changes" class="btn btn-success"> 
-
+                        <input type="submit" value="Save Changes" class="btn btn-success"> 
                     </div>
+                    
                 </div>
-
             </form>
         </div>
     </div>

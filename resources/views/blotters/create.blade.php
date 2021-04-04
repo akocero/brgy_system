@@ -377,10 +377,10 @@
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="s_relationship_to_victim">Relationship to Victim</label>
-                                <input type="text" class="form-control @error('s_relationship_to_victim') {{ 'is-invalid' }}@enderror" id="s_relationship_to_victim" name="s_relationship_to_victim" placeholder="Type Firstname..." value="{{ old('s_relationship_to_victim') }}">
+                                <label for="s_relation_to_victim">Relationship to Victim</label>
+                                <input type="text" class="form-control @error('s_relation_to_victim') {{ 'is-invalid' }}@enderror" id="s_relation_to_victim" name="s_relation_to_victim" placeholder="Type Firstname..." value="{{ old('s_relation_to_victim') }}">
 
-                                @error('s_relationship_to_victim')
+                                @error('s_relation_to_victim')
                                     <small class="text-danger">
                                         {{ $message }}
                                     </small>

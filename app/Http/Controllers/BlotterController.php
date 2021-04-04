@@ -41,19 +41,31 @@ class BlotterController extends Controller
 
     public function store(Request $request)
     {
-
-        $victim = Victim::create($this->validatedVictimData());
-        $suspect = Suspect::create($this->validatedSuspectData());
-        $childrenEnvolved = ChildrenInvolved::create($this->validatedChildrenEnvolvedData());
-        $reporter = Reporter::create($this->validatedReporterData());
+        dd(request()->all());
+        // validate all the data before inserting in database 
+        $blotterData = $this->validatedData();
+        $reporterData = $this->validatedReporterData();
+        $victimData = $this->validatedVictimData();
+        $suspectData = $this->validatedSuspectData();
+        $childrenEnvolvedData = $this->validatedChildrenEnvolvedData();
+        // insert all da data
+        $victim = Victim::create($victimData);
+        $suspect = Suspect::create($suspectData);
+        $childrenEnvolved = ChildrenInvolved::create($childrenEnvolvedData);
+        $reporter = Reporter::create($reporterData);
+        // get all data id created
         $blotter = Blotter::create(
-            $this->validatedData() + [
+            $blotterData + [
                 'suspect_id' => $suspect->id,
                 'victim_id' => $victim->id,
                 'reporter_id' => $reporter->id,
                 'children_involved_id' => $childrenEnvolved->id
             ]
         );
+
+        return redirect()
+            ->route('blotters.show', $blotter->id)
+            ->with('status', 'Succesfully Added!');
     }
 
     public function show(Blotter $blotter)
@@ -72,7 +84,18 @@ class BlotterController extends Controller
 
     public function update(Request $request, Blotter $blotter)
     {
-        $blotter->update($this->validatedData());
+
+        $blotterData = $this->validatedData();
+        $reporterData = $this->validatedReporterData();
+        $victimData = $this->validatedVictimData();
+        $suspectData = $this->validatedSuspectData();
+        $childrenEnvolvedData = $this->validatedChildrenEnvolvedData();
+
+        $blotter->update($blotterData);
+        $blotter->reporter->update($reporterData);
+        $blotter->victim->update($victimData);
+        $blotter->suspect->update($suspectData);
+        $blotter->childrenInvolved->update($childrenEnvolvedData);
 
         return redirect()
             ->route('blotters.show', $blotter->id)
@@ -95,13 +118,13 @@ class BlotterController extends Controller
     protected function validatedVictimData()
     {
         request()->validate([
-            'v_full_name' => '',
+            'v_full_name' => 'required',
             'v_citizenship' => '',
-            'v_gender' => '',
+            'v_gender' => 'required',
             'v_date_of_birth' => '',
             'v_id_details' => '',
             'v_email' => '',
-            'v_contact_no' => '',
+            'v_contact_no' => 'required',
             'v_address' => '',
         ]);
 
@@ -121,12 +144,12 @@ class BlotterController extends Controller
     {
         request()->validate([
             'r_citizenship' => '',
-            'r_full_name' => '',
-            'r_gender' => '',
+            'r_full_name' => 'required',
+            'r_gender' => 'required',
             'r_date_of_birth' => '',
             'r_id_details' => '',
             'r_email' => '',
-            'r_contact_no' => '',
+            'r_contact_no' => 'required',
             'r_address' => '',
         ]);
 
@@ -145,9 +168,9 @@ class BlotterController extends Controller
     protected function validatedSuspectData()
     {
         request()->validate([
-            's_full_name' => '',
+            's_full_name' => 'required',
             's_citizenship' => '',
-            's_gender' => '',
+            's_gender' => 'required',
             's_date_of_birth' => '',
             's_email' => '',
             's_contact_no' => '',
@@ -173,7 +196,7 @@ class BlotterController extends Controller
             'work_address' => request()->s_work_address,
             'with_previous_criminal_records' => request()->s_with_previous_criminal_records,
             'previous_case_status' => request()->s_previous_case_status,
-            'relation_to_victim' => request()->s_relationship_to_victim,
+            'relation_to_victim' => request()->s_relation_to_victim,
             'description' => request()->s_description,
             'remarks' => request()->s_remarks
         ];
