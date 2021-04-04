@@ -15,7 +15,7 @@
         <div class="card-body">
 
 
-            <form action="{{ route('businesses.store') }}" method="POST">
+            <form action="{{ route('blotters.store') }}" method="POST">
                 @csrf
                 {{-- Tabs  --}}
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -347,31 +347,31 @@
                             </div>
                             
                             <div class="form-group col-md-4">
-                                <label for="with_previous_criminal_records">With Previous Criminal Records</label>
+                                <label for="s_with_previous_criminal_records">With Previous Criminal Records</label>
 
-                                <select class="custom-select  @error('with_previous_criminal_records') {{ 'is-invalid' }}@enderror"
-                                        name="with_previous_criminal_records" id="with_previous_criminal_records">
+                                <select class="custom-select  @error('s_with_previous_criminal_records') {{ 'is-invalid' }}@enderror"
+                                        name="s_with_previous_criminal_records" id="s_with_previous_criminal_records">
                                     <option value="">Choose ...</option>
-                                    <option value="yes" {{ old('with_previous_criminal_records') == 'yes' ? 'selected' : ''}}>Yes</option>
-                                    <option value="no" {{ old('with_previous_criminal_records') == 'no' ? 'selected' : ''}}>No</option>
+                                    <option value="yes" {{ old('s_with_previous_criminal_records') == 'yes' ? 'selected' : ''}}>Yes</option>
+                                    <option value="no" {{ old('s_with_previous_criminal_records') == 'no' ? 'selected' : ''}}>No</option>
                                 </select>
 
-                                @error('with_previous_criminal_records')
+                                @error('s_with_previous_criminal_records')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="previous_case_status">Previous Case Status</label>
+                                <label for="s_previous_case_status">Previous Case Status</label>
 
-                                <select class="custom-select  @error('previous_case_status') {{ 'is-invalid' }}@enderror"
-                                        name="previous_case_status" id="previous_case_status">
+                                <select class="custom-select  @error('s_previous_case_status') {{ 'is-invalid' }}@enderror"
+                                        name="s_previous_case_status" id="s_previous_case_status">
                                     <option value="">Choose ...</option>
-                                    <option value="ongoing" {{ old('previous_case_status') == 'ongoing' ? 'selected' : ''}}>Ongoing</option>
-                                    <option value="solved" {{ old('previous_case_status') == 'solved' ? 'selected' : ''}}>Solved</option>
+                                    <option value="ongoing" {{ old('s_previous_case_status') == 'ongoing' ? 'selected' : ''}}>Ongoing</option>
+                                    <option value="solved" {{ old('s_previous_case_status') == 'solved' ? 'selected' : ''}}>Solved</option>
                                 </select>
 
-                                @error('previous_case_status')
+                                @error('s_previous_case_status')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -388,10 +388,10 @@
                             </div>
 
                             <div class="form-group col-md-7">
-                                <label for="s_descriotion">Suspect Description</label>
-                                <textarea type="text" class="form-control @error('s_descriotion') {{ 'is-invalid' }}@enderror" id="s_descriotion" name="s_descriotion" placeholder="Ex. Complextion, Eye Color, Age, Hair, Beard, etc..." value="">{{ old('s_descriotion') }}</textarea>
+                                <label for="s_description">Suspect Description</label>
+                                <textarea type="text" class="form-control @error('s_description') {{ 'is-invalid' }}@enderror" id="s_description" name="s_description" placeholder="Ex. Complextion, Eye Color, Age, Hair, Beard, etc..." value="">{{ old('s_description') }}</textarea>
 
-                                @error('s_descriotion')
+                                @error('s_description')
                                     <small class="text-danger">
                                         {{ $message }}
                                     </small>
@@ -441,10 +441,10 @@
                             </div>
 
                             <div class="form-group col-md-5">
-                                <label for="ce_address">Address</label>
-                                <textarea type="text" class="form-control @error('ce_address') {{ 'is-invalid' }}@enderror" id="ce_address" name="ce_address" placeholder="Type Firstname..." value="">{{ old('ce_address') }}</textarea>
+                                <label for="ce_guardian_address">Address</label>
+                                <textarea type="text" class="form-control @error('ce_guardian_address') {{ 'is-invalid' }}@enderror" id="ce_guardian_address" name="ce_guardian_address" placeholder="Type Firstname..." value="">{{ old('ce_guardian_address') }}</textarea>
 
-                                @error('ce_address')
+                                @error('ce_guardian_address')
                                     <small class="text-danger">
                                         {{ $message }}
                                     </small>
@@ -493,7 +493,7 @@
 
                         <div class="row">
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label for="blotter_entry_no">Blotter Entry No </label>&nbsp;<small class="text-danger">*</small>
                                 <input type="text" class="form-control @error('blotter_entry_no') {{ 'is-invalid' }}@enderror" id="blotter_entry_no" name="blotter_entry_no" placeholder="Ex. John Doe" value="{{ old('blotter_entry_no') }}">
 
@@ -504,7 +504,18 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
+                                <label for="reported_date_time">Reported Date</label>&nbsp;<small class="text-danger">*</small>
+                                <input type="datetime-local" class="form-control @error('reported_date_time') {{ 'is-invalid' }}@enderror" id="reported_date_time" name="reported_date_time" placeholder="Ex. John Doe" value="{{ old('reported_date_time') }}">
+
+                                @error('reported_date_time')
+                                    <small class="text-danger">
+                                    {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-3">
                                 <label for="incident_type">Incident Type </label>&nbsp;<small class="text-danger">*</small>
                                 <input type="text" class="form-control @error('incident_type') {{ 'is-invalid' }}@enderror" id="incident_type" name="incident_type" placeholder="Ex. John Doe" value="{{ old('incident_type') }}">
 
@@ -515,9 +526,9 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label for="incident_date_time">Incident Date and Time </label>&nbsp;<small class="text-danger">*</small>
-                                <input type="date" class="form-control @error('incident_date_time') {{ 'is-invalid' }}@enderror" id="incident_date_time" name="incident_date_time" placeholder="Ex. John Doe" value="{{ old('incident_date_time') }}">
+                                <input type="datetime-local" class="form-control @error('incident_date_time') {{ 'is-invalid' }}@enderror" id="incident_date_time" name="incident_date_time" placeholder="Ex. John Doe" value="{{ old('incident_date_time') }}">
 
                                 @error('incident_date_time')
                                     <small class="text-danger">
@@ -536,8 +547,6 @@
                                     </small>
                                 @enderror
                             </div> 
-
-                            
 
                             <div class="form-group col-md-7">
                                 <label for="incident_details">Incident Details</label>
