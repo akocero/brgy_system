@@ -16,4 +16,9 @@ class Resident extends Model
     {
         return $this->belongsTo(Household::class);
     }
+
+    public function purok()
+    {
+        return $this->belongsTo(Purok::class);
+    }
 }

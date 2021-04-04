@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Household;
+use App\Models\Purok;
 use App\Models\Resident;
 use Illuminate\Http\Request;
 
@@ -31,9 +32,9 @@ class ResidentController extends Controller
 
     public function create()
     {
-
+        $puroks = Purok::all()->sortBy('name');
         $households = Household::all()->sortBy('family_name');
-        return view('residents.create', compact('households'));
+        return view('residents.create', compact('households', 'puroks'));
     }
 
 
@@ -54,9 +55,9 @@ class ResidentController extends Controller
 
     public function edit(Resident $resident)
     {
-
+        $puroks = Purok::all()->sortBy('name');
         $households = Household::all()->sortBy('family_name');
-        return view('residents.edit', compact('households', 'resident'));
+        return view('residents.edit', compact('households', 'resident', 'puroks'));
     }
 
 
@@ -73,22 +74,33 @@ class ResidentController extends Controller
     protected function validatedData()
     {
         return request()->validate([
+            'purok_id' => 'required',
+            'household_id' => '',
             'first_name' => 'required',
             'last_name' => 'required',
             'middle_name' => '',
             'suffix' => '',
+            'nick_name' => '',
             'address' => 'required',
             'gender' => 'required',
+            'spouse_name' => '',
+            'date_of_birth' => '',
+            'place_of_birth' => '',
+            'citizenship' => 'required',
+            'resident_status' => 'required',
+            'civil_status' => 'required',
+            'religion' => '',
             'mobile_no' => 'required',
             'landline' => '',
             'email' => '',
-            'date_of_birth' => '',
-            'place_of_birth' => '',
-            'occupation' => '',
-            'citizenship' => 'required',
-            'civil_status' => 'required',
             'is_voter' => '',
-            'household_id' => '',
+            'precinct_no' => '',
+            'complexion' => '',
+            'blood_type' => '',
+            'remarks' => '',
+            'employment_status' => '',
+            'occupation' => '',
+            'educational_attainment' => '',
         ]);
     }
 }

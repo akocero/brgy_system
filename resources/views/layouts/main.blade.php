@@ -69,11 +69,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
       var navlinks = document.querySelectorAll('.nav-treeview .nav-link');
       var url      = window.location.href;    
       navlinks.forEach(link => {
-        // const arr = link.href.split('/')
-        // const linkpath = `${arr[0]}/${arr[1]}/${arr[2]}/${arr[3]} `;
-        // console.log(link.href)
-        // console.log(url);
-        // console.log(link.href );
         if(url.includes(link.href )){
           // console.log(link.href);
           link.parentElement.parentElement.parentElement.classList.add('menu-open');

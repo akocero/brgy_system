@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Household;
+use App\Models\ChildrenInvolved;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class HouseholdFactory extends Factory
+class ChildrenInvoledFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Household::class;
+    protected $model = ChildrenInvolved::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +22,7 @@ class HouseholdFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->lastName . ' Family',
-            'details' => $this->faker->lastName . ' Family Details',
+            //
         ];
     }
 }

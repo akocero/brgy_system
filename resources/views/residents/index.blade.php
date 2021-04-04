@@ -30,6 +30,11 @@
                 </form>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <label for="" class="text-dark">Results total: {{ $residents->total() }}</label>
+            </div>
+        </div>
         <div class="table-responsive">   
             <table class="table table-sm table-bordered table-striped">
                 <thead>
@@ -59,8 +64,8 @@
                             </td>
                         </tr>
                     @empty
-                        <tr>
-                            <td colspan="4">No Resident Found!</td>
+                        <tr class="text-center">
+                            <td colspan="10">No Residents Found!</td>
                         </tr>
                     @endforelse
                 </tbody>

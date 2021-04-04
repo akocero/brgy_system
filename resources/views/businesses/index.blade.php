@@ -26,6 +26,12 @@
                             <input type="text" class="form-control" id="search" name="search" placeholder="Enter Fistname or Lastname..." required value="{{ $search ? $search : '' }}">
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="" class="text-dark">Results total: {{ $businesses->total() }}</label>
+                        </div>
+                    </div>
                     
                 </form>
             </div>
@@ -64,8 +70,8 @@
                             </td>
                         </tr>
                     @empty
-                        <tr>
-                            <td colspan="4">No Business Found!</td>
+                        <tr class="text-center">
+                            <td colspan="10">No Businesses Found!</td>
                         </tr>
                     @endforelse
                 </tbody>

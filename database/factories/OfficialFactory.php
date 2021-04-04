@@ -22,9 +22,16 @@ class OfficialFactory extends Factory
     public function definition()
     {
         return [
-            'full_name' => $this->faker->name,
-            'position' => 'councilor',
-            'details' => $this->faker->text,
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'middle_name' => $this->faker->lastName,
+            'suffix' => $this->faker->suffix,
+            'gender' => 'male',
+            'mobile_no' => $this->faker->phoneNumber,
+            'position' => $this->faker->jobTitle,
+            'committee' => 'de abswelto',
+            'rank_no' => rand(1, 10),
+            'remarks' => $this->faker->text,
         ];
     }
 }
