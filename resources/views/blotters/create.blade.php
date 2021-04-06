@@ -4,6 +4,16 @@
 @section("title","Add Blotter")
 
 @section('content')
+    @if($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            
+            Please check all inputs and tabs! <br />
+            All the fields with ( * ) is required
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <div class="card">
         <div class="col-12 pt-4 px-4 d-flex justify-content-between align-items-center">
             <h4 class="h4">Add new blotter</h4>

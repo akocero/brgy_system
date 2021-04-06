@@ -8,6 +8,7 @@ use App\Models\Reporter;
 use App\Models\Suspect;
 use App\Models\Victim;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\TryCatch;
 
 class BlotterController extends Controller
 {
@@ -41,13 +42,15 @@ class BlotterController extends Controller
 
     public function store(Request $request)
     {
-        dd(request()->all());
+        // dd(request()->all());
         // validate all the data before inserting in database 
+
         $blotterData = $this->validatedData();
         $reporterData = $this->validatedReporterData();
         $victimData = $this->validatedVictimData();
         $suspectData = $this->validatedSuspectData();
         $childrenEnvolvedData = $this->validatedChildrenEnvolvedData();
+
         // insert all da data
         $victim = Victim::create($victimData);
         $suspect = Suspect::create($suspectData);
