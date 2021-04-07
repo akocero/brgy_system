@@ -43,7 +43,7 @@ class BlotterController extends Controller
     public function store(Request $request)
     {
         // dd(request()->all());
-        // validate all the data before inserting in database 
+        // validate all the data before inserting in database
 
         $blotterData = $this->validatedData();
         $reporterData = $this->validatedReporterData();
@@ -88,6 +88,7 @@ class BlotterController extends Controller
     public function update(Request $request, Blotter $blotter)
     {
 
+        // dd(request()->all());
         $blotterData = $this->validatedData();
         $reporterData = $this->validatedReporterData();
         $victimData = $this->validatedVictimData();
@@ -98,7 +99,12 @@ class BlotterController extends Controller
         $blotter->reporter->update($reporterData);
         $blotter->victim->update($victimData);
         $blotter->suspect->update($suspectData);
-        $blotter->childrenInvolved->update($childrenEnvolvedData);
+
+        if(!is_null(request()->ce_guardian_name)){
+            $blotter->childrenInvolved->update($childrenEnvolvedData);
+        }
+
+            // dd($childrenEnvolvedData);
 
         return redirect()
             ->route('blotters.show', $blotter->id)
