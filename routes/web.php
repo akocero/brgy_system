@@ -7,6 +7,7 @@ use App\Http\Controllers\HouseholdController;
 use App\Http\Controllers\OfficialController;
 use App\Http\Controllers\ResidentController;
 use App\Http\Controllers\ResolutionController;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,5 +40,12 @@ Route::apiResource('officials', OfficialController::class)->except('destroy');
 // Route::get('households', [HouseholdController::class, 'index'])->name('households.index');
 
 Auth::routes();
+
+Route::get('reports/', function () {
+    // return view('reports.default');
+
+    $pdf = PDF::loadView('reports.default');
+    return $pdf->stream('reports.default');
+});
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
