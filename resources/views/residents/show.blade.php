@@ -34,6 +34,10 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" id="pills-image-tab" data-toggle="pill" href="#pills-image" role="tab" aria-controls="pills-image" aria-selected="false">Image</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" id="pills-voters-details-tab" data-toggle="pill" href="#pills-voters-details" role="tab" aria-controls="pills-voters-details" aria-selected="false">Voters Details</a>
                     </li>
 
@@ -315,6 +319,30 @@
                                     </small>
                                 @enderror
                             </div>
+
+                        </div>
+                        
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab">
+
+                        <div class="row">
+
+                            @if ($resident->image_path)
+                                <div class="col-md-4">
+                                    <div class="image-container">   
+                                        <img src="{{ asset('storage/' . $resident->image_path) }}" alt="" class="img-thumbnail">
+                                        <a class="btn-delete-image"><span>&#10005;</span></a>
+                                    </div>
+                                    
+                                </div>
+                            @else
+                                <div class="col-md-4">
+                                    <h5>No image found!</h5>
+                                </div>
+                            @endif
+
+                            
 
                         </div>
                         

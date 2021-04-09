@@ -28,7 +28,7 @@ class OfficialFactory extends Factory
             'suffix' => $this->faker->suffix,
             'gender' => 'male',
             'mobile_no' => $this->faker->phoneNumber,
-            'position' => $this->faker->jobTitle,
+            'position' => 'councilor',
             'committee' => 'de abswelto',
             'rank_no' => rand(1, 10),
             'remarks' => $this->faker->text,

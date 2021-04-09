@@ -13,7 +13,7 @@
         </div>
         
         <div class="card-body">
-            <form action="{{ route('residents.update', $resident->id) }}" method="POST">
+            <form action="{{ route('residents.update', $resident->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -24,6 +24,10 @@
 
                     <li class="nav-item">
                         <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-image-tab" data-toggle="pill" href="#pills-image" role="tab" aria-controls="pills-image" aria-selected="false">Image</a>
                     </li>
 
                     <li class="nav-item">
@@ -427,6 +431,44 @@
 
                         </div>
 
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab">
+
+                        <div class="row">
+
+                            @if ($resident->image_path)
+                                <div class="col-md-4">
+                                    <img src="{{ asset('storage/' . $resident->image_path) }}" alt="" class="img-thumbnail">
+                                </div>
+                            @else
+                                <div class="col-md-4">
+                                    <h5>No image found!</h5>
+                                </div>
+                            @endif
+
+                            <div class="form-group col-md-4">
+                                <label for="image_path">Update Image (Optional)</label>
+                                <input type="file" class="form-control-file @error('image_path') {{ 'is-invalid' }}@enderror" id="image_path" name="image_path" placeholder="Type Firstname..." value="">
+
+                                @error('image_path')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="">Use Camera instead</label><br>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-camera-retro mr-2"></i>
+                                    Open Camera 
+                                </button>
+                            </div>
+                            
+
+                        </div>
+                        
                     </div>
 
                 </div>

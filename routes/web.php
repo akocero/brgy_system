@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BarangayCaseController;
 use App\Http\Controllers\BlotterController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\HomeController;
@@ -34,9 +35,11 @@ Route::resource('residents', ResidentController::class)->except('destroy');
 Route::resource('businesses', BusinessController::class)->except('destroy');
 Route::resource('blotters', BlotterController::class)->except('destroy');
 Route::resource('resolutions', ResolutionController::class)->except('destroy');
+Route::resource('officials', OfficialController::class)->except('destroy');
+Route::resource('barangay_cases', BarangayCaseController::class)->except('destroy');
 Route::view('residents/print/view', 'residents.view_print');
 Route::apiResource('households', HouseholdController::class)->except('destroy');
-Route::apiResource('officials', OfficialController::class)->except('destroy');
+// Route::apiResource('officials', OfficialController::class)->except('destroy');
 // Route::get('households', [HouseholdController::class, 'index'])->name('households.index');
 
 Auth::routes();

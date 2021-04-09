@@ -4,6 +4,15 @@
 @section("title","Resolution Details")
 
 @section('content')
+    @if (session('status'))
+        <div class="alert alert-{{ str_contains(session('status'), 'Updated') ? 'primary' : 'success' }} alert-dismissible fade show" role="alert">
+            
+            {{  session('status') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <div class="card">
         <div class="col-12 pt-4 px-4 d-flex justify-content-between align-items-center">
             <h4 class="h4"> {{$resolution->author}}</h4>
