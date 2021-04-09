@@ -16,7 +16,8 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-file-alt"></i>
+                        {{-- <i class="nav-icon far fa-file-alt"></i> --}}
+                        <i data-feather="database" class="nav-icon" width='18' height="18"></i>
                         <p>
                             Data Entry
                             <i class="right fas fa-angle-left"></i>
@@ -66,7 +67,7 @@
                         <li class="nav-item">
                             <a href="{{ route('blotters.index') }}" class="nav-link">
                                 {{-- <i class="far fa-circle nav-icon"></i> --}}
-                                <i data-feather="circle" class="nav-icon" stroke-width="1.5"></i>
+                                <i data-feather="circle" class="nav-icon" width='18' height="18"></i>
                                 <p>Blotters</p>
                             </a>
                         </li>
@@ -75,7 +76,7 @@
                         <li class="nav-item">
                             <a href="{{ route('barangay_cases.index') }}" class="nav-link">
                                 {{-- <i class="far fa-circle nav-icon"></i> --}}
-                                <i data-feather="circle" class="nav-icon" stroke-width="1.5"></i>
+                                <i data-feather="circle" class="nav-icon" width='18' height="18"></i>
                                 <p>Cases / Complains</p>
                             </a>
                         </li>
@@ -84,7 +85,8 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-file-word"></i>
+                        {{-- <i class="nav-icon far fa-file-word"></i> --}}
+                        <i data-feather="pie-chart" class="nav-icon" width='18' height="18"></i>
                         <p>
                             Reports
                             <i class="right fas fa-angle-left"></i>
@@ -118,7 +120,8 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-file-pdf"></i>
+                        {{-- <i class="nav-icon far fa-file-pdf"></i> --}}
+                        <i data-feather="award" class="nav-icon" width='22' height="22"></i>
                         <p>
                             Clearance & Permits
                             <i class="right fas fa-angle-left"></i>
