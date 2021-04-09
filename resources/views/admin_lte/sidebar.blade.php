@@ -71,6 +71,15 @@
                             </a>
                         </li>
                     </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('barangay_cases.index') }}" class="nav-link">
+                                {{-- <i class="far fa-circle nav-icon"></i> --}}
+                                <i data-feather="circle" class="nav-icon" stroke-width="1.5"></i>
+                                <p>Cases / Complains</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item">
