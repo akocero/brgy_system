@@ -62459,9 +62459,9 @@ label {
 
 .card form .nav-pills .nav-link.active {
   margin-bottom: -1.5px;
-  color: #343a40;
+  color: #36926f;
   background-color: none !important;
-  border-bottom: 2px solid #343a40;
+  border-bottom: 2px solid #47CA98;
   border-radius: 0;
   padding-bottom: 1rem;
 }
@@ -62471,7 +62471,7 @@ label {
 }
 
 ul#pills-tab {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(71, 202, 152, 0.2);
 }
 
 .image-container .btn-delete-image {

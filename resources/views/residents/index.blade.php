@@ -52,11 +52,11 @@
                             </td>
                             <td>{{ $resident->email }}</td>
                             <td>
-                                <a class="btn btn-sm btn-regular" href="{{ route('residents.edit', $resident->id) }}">
-                                    <i class="far fa-edit"></i>
+                                <a class="btn btn-sm btn-dafault" href="{{ route('residents.edit', $resident->id) }}">
+                                    <i data-feather="edit" width='14' height="14"></i>
                                 </a>
-                                <a class="btn btn-sm btn-regular" href="{{ route('residents.show', $resident->id) }}">
-                                    <i class="far fa-folder-open"></i>
+                                <a class="btn btn-sm btn-dafault" href="{{ route('residents.show', $resident->id) }}">
+                                    <i data-feather="folder" width='14' height="14"></i>
                                 </a>
                                 {{-- <button class="btn btn-sm btn-regular">
                                     <i class="far fa-trash-alt"></i>

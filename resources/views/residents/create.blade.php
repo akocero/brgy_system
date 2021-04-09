@@ -4,8 +4,18 @@
 @section("title","Add Resident")
 
 @section('content')
+    @if($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            
+            Please check all inputs and tabs! <br />
+            All the fields with ( * ) is required
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <div class="card">
-        <div class="col-12 pt-3 px-3 d-flex justify-content-between align-items-center">
+        <div class="col-12 pt-4 px-4 d-flex justify-content-between align-items-center">
             <h4 class="h4">Add new resident</h4>
             <a style="float: right" href="{{ route('residents.index') }}" class="pr-2">
                 Back to residents
@@ -346,7 +356,7 @@
                             <div class="form-group col-md-8">
                                 <label for="">Use Camera instead</label><br>
                                 <button class="btn btn-secondary">
-                                    <i class="fas fa-camera-retro mr-2"></i>
+                                    <i data-feather="camera" class="mr-1" width='16' height="16"></i>
                                     Open Camera 
                                 </button>
                             </div>
