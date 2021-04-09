@@ -17,7 +17,8 @@ body {
 
 .card {
     // box-shadow: none !important;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px !important;
+    box-shadow: rgba(0, 0, 0, 0.034) 0px 1px 4px !important;
+    // border-radius: 0;
     border: none !important;
 }
 
@@ -53,6 +54,7 @@ label {
     border-bottom: 2px solid #343a40;
     border-radius: 0;
     padding-bottom: 1rem;
+    
 }
 
 .card form .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
