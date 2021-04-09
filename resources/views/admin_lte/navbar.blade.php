@@ -10,6 +10,7 @@
         <li class="nav-item">
             <button class="nav-link btn btn-link" onclick="window.location.reload()">
                 <i class="fas fa-redo-alt pr-1"></i>
+                
                 {{-- {{ auth()->user()->name }} --}}
                 Refresh
             </button>

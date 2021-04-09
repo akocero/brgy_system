@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="#" class="brand-link text-sm">
         {{-- <img src="{{ asset('images/dap_logo.png')}}" alt="Dap Logo" class="brand-image" style="opacity: .8"> --}}
-        <span class="brand-text font-weight-light">Brgy. Santarosa</span>
+        <span class="brand-text font-weight-light">FMIS</span>
     </a>
 
     <!-- Sidebar -->
@@ -18,7 +18,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-file-alt"></i>
                         <p>
-                            Brgy. Data Entry
+                            Data Entry
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -65,16 +65,9 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('blotters.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                {{-- <i class="far fa-circle nav-icon"></i> --}}
+                                <i data-feather="circle" class="nav-icon" stroke-width="1.5"></i>
                                 <p>Blotters</p>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('barangay_cases.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Cases/Complains</p>
                             </a>
                         </li>
                     </ul>

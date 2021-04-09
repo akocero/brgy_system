@@ -9,6 +9,7 @@
         {{-- <button type="button" class="btn btn-secondary btn-flat" data-toggle="modal" data-target="#exampleModal">
                 Create Data
         </button> --}}
+        
         <a href="{{ route('officials.create') }}" class="btn btn-flat btn-secondary">New Official</a>
     </div>
     <div class="col-12">
