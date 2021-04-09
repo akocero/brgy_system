@@ -16,8 +16,10 @@
     <div class="card">
         <div class="col-12 pt-4 px-4 d-flex justify-content-between align-items-center">
             <h4 class="h4">{{$barangay_case->subject_person}} case / complain</h4>
-            <a style="float: right" href="{{ route('barangay_cases.index') }}" class="pr-2">
+            <a style="float: right" href="{{ route('barangay_cases.index') }}" class="pr-2 d-flex align-items-center">
                 View all case / complain
+                {{-- <i class="fas fa-arrow-right ml-2 text-sm"></i> --}}
+                <ion-icon name="arrow-forward-outline" class="ml-2"></ion-icon>
             </a>
         </div>
         <div class="col-12">

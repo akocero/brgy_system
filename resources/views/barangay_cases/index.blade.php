@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="search">Search (Hit enter)</label><a style="float: right" href="{{ route('barangay_cases.index') }}">View all</a>
-                            <input type="text" class="form-control" id="search" name="search" placeholder="Enter Lastname or Firstname..." required value="{{ $search ? $search : '' }}">
+                            <input type="text" class="form-control" id="search" name="search" placeholder="Enter Summon Purpose or Subject Person..." required value="{{ $search ? $search : '' }}">
                         </div>
                     </div>
 

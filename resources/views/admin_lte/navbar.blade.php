@@ -4,15 +4,24 @@
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button" onclick="toggleSidebarDocked()" id="sidebar_docker">
-                <i class="fas fa-bars"></i>
+                <i data-feather="sidebar" class="mr-2" width='18' height="18"></i>
             </a>
         </li>
         <li class="nav-item">
-            <button class="nav-link btn btn-link" onclick="window.location.reload()">
-                <i class="fas fa-redo-alt pr-1"></i>
+            <a class="nav-link" onclick="window.location.reload()" role="button">
+                <i data-feather="refresh-cw" class="mr-2" width='18' height="18"></i>
+                
                 {{-- {{ auth()->user()->name }} --}}
-                Refresh
-            </button>
+                {{-- Refresh --}}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" role="button">
+                <i data-feather="home" class="mr-2" width='18' height="18"></i>
+                
+                {{-- {{ auth()->user()->name }} --}}
+                {{-- Refresh --}}
+            </a>
         </li>
     </ul>
 
@@ -22,8 +31,8 @@
     
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-bell"></i>
-                <span class="badge badge-primary navbar-badge">15</span>
+                <i data-feather="bell" width='18' height="18"></i>
+                <span class="badge badge-danger navbar-badge">15</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <span class="dropdown-header">15 Notifications</span>
@@ -48,7 +57,7 @@
         </li>
         <li class="nav-item ml-2">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                <i class="fas fa-user"></i>
+                <i data-feather="user" class="mr-1" width='18' height="18"></i>
                 {{-- {{ auth()->user()->name }} --}}
                 John Doe
             </a>

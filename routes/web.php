@@ -47,8 +47,8 @@ Auth::routes();
 Route::get('reports/', function () {
     // return view('reports.default');
 
-    $pdf = PDF::loadView('reports.default');
-    return $pdf->stream('reports.default');
+    $pdf = PDF::loadView('pdf_template.report.default');
+    return $pdf->stream('pdf_template.report.default');
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

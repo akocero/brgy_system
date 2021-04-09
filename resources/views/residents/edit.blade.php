@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="card">
-        <div class="col-12 pt-3 px-3 d-flex justify-content-between align-items-center">
+        <div class="col-12 pt-3 px-4 d-flex justify-content-between align-items-center">
             <h4 class="h4">{{$resident->first_name}} details</h4>
             <a style="float: right" href="{{ route('residents.index') }}" class="pr-2">
                 Back to residents
