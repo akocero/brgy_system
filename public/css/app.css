@@ -62473,3 +62473,25 @@ label {
 ul#pills-tab {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+.image-container .btn-delete-image {
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: rgba(255, 255, 255, 0.486);
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+.image-container .btn-delete-image:hover {
+  background-color: #da5043;
+  color: white;
+}

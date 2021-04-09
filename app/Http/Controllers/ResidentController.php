@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Household;
 use App\Models\Purok;
 use App\Models\Resident;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ResidentController extends Controller
 {
@@ -40,7 +43,12 @@ class ResidentController extends Controller
 
     public function store(Request $request)
     {
+
+        // dd(request()->all());
         $resident = Resident::create($this->validatedData());
+
+        $this->storeImage($resident);
+
 
         return redirect()
             ->route('residents.show', $resident->id)
@@ -63,7 +71,15 @@ class ResidentController extends Controller
 
     public function update(Request $request, Resident $resident)
     {
-        $resident->update($this->validatedData());
+        $residentValidatedData = $this->validatedData();
+
+        if ($resident->image_path && request()->has('image_path')) {
+            unlink(storage_path('app/public/' . $resident->image_path));
+        }
+
+        $resident->update($residentValidatedData);
+
+        $this->storeImage($resident);
 
         return redirect()
             ->route('residents.show', $resident->id)
@@ -101,6 +117,17 @@ class ResidentController extends Controller
             'employment_status' => '',
             'occupation' => '',
             'educational_attainment' => '',
+            'image_path' => 'sometimes|file|image|max:2000',
         ]);
+    }
+
+
+    protected function storeImage($resident)
+    {
+        if (request()->has('image_path')) {
+            $resident->update([
+                'image_path' => request()->image_path->store('images/residents', 'public'),
+            ]);
+        }
     }
 }

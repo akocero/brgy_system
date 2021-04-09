@@ -13,7 +13,7 @@
         </div>
         
         <div class="card-body">
-            <form action="{{ route('residents.store') }}" method="POST">
+            <form action="{{ route('residents.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -27,12 +27,18 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" id="pills-image-tab" data-toggle="pill" href="#pills-image" role="tab" aria-controls="pills-image" aria-selected="false">Image</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" id="pills-voters-details-tab" data-toggle="pill" href="#pills-voters-details" role="tab" aria-controls="pills-voters-details" aria-selected="false">Voters Details</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" id="pills-other-info-tab" data-toggle="pill" href="#pills-other-info" role="tab" aria-controls="pills-other-info" aria-selected="false">Other Info.</a>
                     </li>
+
+
                     
                 </ul>
                 
@@ -322,6 +328,34 @@
                         
                     </div>
 
+                    <div class="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab">
+
+                        <div class="row">
+
+                            <div class="form-group col-md-4">
+                                <label for="image_path">Image (Optional)</label>
+                                <input type="file" class="form-control-file @error('image_path') {{ 'is-invalid' }}@enderror" id="image_path" name="image_path" placeholder="Type Firstname..." value="{{ old('image_path') }}">
+
+                                @error('image_path')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-8">
+                                <label for="">Use Camera instead</label><br>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-camera-retro mr-2"></i>
+                                    Open Camera 
+                                </button>
+                            </div>
+                            
+
+                        </div>
+                        
+                    </div>
+
                     <div class="tab-pane fade" id="pills-other-info" role="tabpanel" aria-labelledby="pills-other-info-tab">
 
                         <div class="row">
@@ -345,8 +379,6 @@
                                 @enderror
                             </div>
 
-                            
-
                             <div class="form-group col-md-4">
                                 <label for="educational_attainment">Educational Attainment</label>
 
@@ -361,6 +393,7 @@
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
+
 
                             <div class="form-group col-md-4">
                                 <label for="employment_status">Employment Status</label>
