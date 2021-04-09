@@ -20,7 +20,8 @@
                         <i data-feather="home" class="nav-icon" width='19' height="19"></i>
                         <p>
                             Dashboard
-                            <i class="right fas fa-angle-left"></i>
+                            {{-- <i class="right fas fa-angle-left"></i> --}}
+                            <i data-feather="chevron-left" class="right" width='16' height="16"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -39,7 +40,8 @@
                         <i data-feather="database" class="nav-icon" width='18' height="18"></i>
                         <p>
                             Data Entry
-                            <i class="right fas fa-angle-left"></i>
+                            {{-- <i class="right fas fa-angle-left"></i> --}}
+                            <i data-feather="chevron-left" class="right" width='16' height="16"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -108,7 +110,8 @@
                         <i data-feather="pie-chart" class="nav-icon" width='18' height="18"></i>
                         <p>
                             Reports
-                            <i class="right fas fa-angle-left"></i>
+                            {{-- <i class="right fas fa-angle-left"></i> --}}
+                            <i data-feather="chevron-left" class="right" width='16' height="16"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -143,7 +146,8 @@
                         <i data-feather="award" class="nav-icon" width='22' height="22"></i>
                         <p>
                             Clearance & Permits
-                            <i class="right fas fa-angle-left"></i>
+                            {{-- <i class="right fas fa-angle-left"></i> --}}
+                            <i data-feather="chevron-left" class="right" width='16' height="16"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -178,7 +182,8 @@
                         <i data-feather="settings" class="nav-icon" width='19' height="19"></i>
                         <p>
                             Settings
-                            <i class="right fas fa-angle-left"></i>
+                            {{-- <i class="right fas fa-angle-left"></i> --}}
+                            <i data-feather="chevron-left" class="right" width='16' height="16"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
