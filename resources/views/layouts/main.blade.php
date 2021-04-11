@@ -14,7 +14,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
   <link rel="stylesheet" href="/css/app.css">
-
+  @yield('custom_styles')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
 <div class="wrapper">

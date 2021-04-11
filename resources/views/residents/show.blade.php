@@ -1,9 +1,65 @@
 @extends('layouts.main')
 
 
-@section("title","Resident Details")
+@section("title","Resident")
 
 @section('content')
+    <div
+    class="modal fade show"
+    id="household_modal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content ">
+
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h5 class="modal-title" id="exampleModalLabel">Brgy. Clearance</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="modal-body">
+                    <form action="" method="get">
+                        @csrf
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="clearance_purpose">Clearance Purpose</label>
+
+                                <select class="custom-select  @error('clearance_purpose') {{ 'is-invalid' }}@enderror"
+                                        name="clearance_purpose" id="clearance_purpose">
+                                    <option value="">Choose ...</option>
+                                    <option value="local employment">Local Employement</option>
+                                    <option value="overseas travel">Overseas Travel</option>
+                                </select>
+
+                                @error('clearance_purpose')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-12">
+                                <input type="button" value="Print" id="print_clearance_btn" class="btn-block btn btn-custom-success" onclick="printClearance()">
+                                
+
+                                 
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer pt-0 border-top-0">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
     @if (session('status'))
         <div class="alert alert-{{ str_contains(session('status'), 'Updated') ? 'primary' : 'success' }} alert-dismissible fade show" role="alert">
             
@@ -14,15 +70,16 @@
         </div>
     @endif
     <div class="card">
-        <div class="col-12 pt-3 px-3 d-flex justify-content-between align-items-center">
-            <h4 class="h4">Welcome {{$resident->first_name}}!</h4>
-            <a style="float: right" href="{{ route('residents.index') }}" class="pr-2">
-                Back to residents
+        <div class="col-12 pt-3 px-4 d-flex justify-content-between align-items-center">
+            <h4 class="h4">{{Str::ucfirst($resident->last_name)}}, {{Str::ucfirst($resident->first_name)}} Info.</h4>
+            <a style="float: right" href="{{ route('residents.index') }}" class="btn btn-link pr-0">
+                Resident List
+                <i data-feather="arrow-right" class="ml-1 mr-0" width='16' height="16"></i>
             </a>
         </div>
         
         <div class="card-body">
-            <form action="#" method="POST">
+            <form action="#" method="POST" id="resident_form">
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
                     <li class="nav-item ">
@@ -44,6 +101,33 @@
                     <li class="nav-item">
                         <a class="nav-link" id="pills-other-info-tab" data-toggle="pill" href="#pills-other-info" role="tab" aria-controls="pills-other-info" aria-selected="false">Other Info.</a>
                     </li>
+
+                    <li class="nav-item ml-auto">
+                        <a style="float: right" href="{{ route('residents.edit', $resident->id) }}" class="pr-2 nav-link" role="button" data-toggle="tooltip" data-placement="top" title="Edit Resident">
+                            <i data-feather="edit" class="ml-1" width='16' height="16"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" data-toggle="dropdown" href="#">
+                            <i data-feather="printer" width='18' height="18"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                            <span class="dropdown-header">Print Certificates</span>
+                            <div class="dropdown-divider"></div>
+                            <a
+                            role="button" 
+                            class="dropdown-item" 
+                            data-toggle="modal" 
+                            data-target="#household_modal">
+                                Brgy. Clearance
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                Cert. of Residency
+                            </a>
+                        </div>
+                    </li>      
                     
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
@@ -510,9 +594,9 @@
 
 
         function disableInputs(){
-            const inputs = document.querySelectorAll('input');
-            const textarea = document.querySelectorAll('textarea');
-            const select = document.querySelectorAll('select');
+            const inputs = document.querySelectorAll('#resident_form input');
+            const textarea = document.querySelectorAll('#resident_form textarea');
+            const select = document.querySelectorAll('#resident_form select');
             // const inputs = document.querySelectorAll('');
 
             inputs.forEach(input => {
@@ -526,6 +610,33 @@
             select.forEach(item => {
                 item.setAttribute('disabled','true');
             });
+        }
+
+        function printClearance() {
+            let clearance_purpose = $('#clearance_purpose').val();
+
+            if(!clearance_purpose) {
+                $('#clearance_purpose').addClass('is-invalid');
+                alert('Please check your inputs!');
+            }else{
+                $('#clearance_purpose').removeClass('is-invalid');
+                $('#print_clearance_btn').attr('disabled', 'true').val('Opening in a new tab...');
+                let print = confirm('Are you sure you want to print clearance?');
+
+                if(print){
+                    setTimeout(() => {
+                        $('#clearance_purpose').val('');
+                        $('#print_clearance_btn').removeAttr('disabled').val('Print');
+                        $('#household_modal').modal('hide');
+                        window.open("{{ route('clearance.print', ['resident' => $resident->id, 'clerance_purpose' => 'local employment']) }}", '_blank');
+                    }, 2000)
+                }else{
+                    $('#clearance_purpose').val('');
+                    $('#print_clearance_btn').removeAttr('disabled').val('Print');
+                    $('#household_modal').modal('hide');
+                }
+                
+            }
         }
 
     </script>

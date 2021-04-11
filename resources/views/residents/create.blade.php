@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 
-@section("title","Add Resident")
+@section("title","Residents")
 
 @section('content')
     @if($errors->any())
@@ -15,10 +15,11 @@
         </div>
     @endif
     <div class="card">
-        <div class="col-12 pt-4 px-4 d-flex justify-content-between align-items-center">
-            <h4 class="h4">Add new resident</h4>
-            <a style="float: right" href="{{ route('residents.index') }}" class="pr-2">
-                Back to residents
+        <div class="col-12 pt-3 px-4 d-flex justify-content-between align-items-center">
+            <h4 class="h4">New Resident</h4>
+            <a style="float: right" href="{{ route('residents.index') }}" class="btn btn-link pr-0">
+                Resident List
+                <i data-feather="arrow-right" class="ml-1 mr-0" width='16' height="16"></i>
             </a>
         </div>
         
@@ -313,9 +314,8 @@
 
                                 <select class="custom-select  @error('is_voter') {{ 'is-invalid' }}@enderror"
                                         name="is_voter" id="is_voter">
-                                    <option value="">Choose ...</option>
-                                    <option value="1" {{ old('is_voter') == '1' ? 'selected' : ''}}>Yes</option>
                                     <option value="0" {{ old('is_voter') == '0' ? 'selected' : ''}}>No</option>
+                                    <option value="1" {{ old('is_voter') == '1' ? 'selected' : ''}}>Yes</option>
                                 </select>
 
                                 @error('is_voter')
@@ -477,7 +477,7 @@
                 <hr>
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="submit" value="submit" class="btn btn-success"> 
+                        <input type="submit" value="Save" class="btn btn-custom-success float-right px-5"> 
                     </div>
                 </div>
                 

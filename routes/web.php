@@ -3,12 +3,12 @@
 use App\Http\Controllers\BarangayCaseController;
 use App\Http\Controllers\BlotterController;
 use App\Http\Controllers\BusinessController;
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HouseholdController;
 use App\Http\Controllers\OfficialController;
 use App\Http\Controllers\ResidentController;
 use App\Http\Controllers\ResolutionController;
-use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,16 +39,20 @@ Route::resource('officials', OfficialController::class)->except('destroy');
 Route::resource('barangay_cases', BarangayCaseController::class)->except('destroy');
 Route::view('residents/print/view', 'residents.view_print');
 Route::apiResource('households', HouseholdController::class)->except('destroy');
+Route::get('certificates/resident/{resident}/clearance', [CertificateController::class, 'show'])->name('clearance.print');
 // Route::apiResource('officials', OfficialController::class)->except('destroy');
 // Route::get('households', [HouseholdController::class, 'index'])->name('households.index');
 
 Auth::routes();
 
-Route::get('reports/', function () {
+Route::get('pdf/clearance', function () {
     // return view('reports.default');
+    return view('pdf_template.clearance.print_file');
+});
 
-    $pdf = PDF::loadView('pdf_template.report.default');
-    return $pdf->stream('pdf_template.report.default');
+Route::get('brgy/clearance', function () {
+    // return view('reports.default');
+    return view('documents.index');
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

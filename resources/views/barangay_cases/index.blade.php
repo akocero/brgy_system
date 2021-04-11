@@ -9,7 +9,10 @@
         {{-- <button type="button" class="btn btn-secondary btn-flat" data-toggle="modal" data-target="#exampleModal">
                 Create Data
         </button> --}}
-        <a href="{{ route('barangay_cases.create') }}" class="btn btn-flat btn-secondary">New Case/Complain</a>
+        <a href="{{ route('barangay_cases.create') }}" class="btn btn-flat btn-secondary">
+            
+            New Case/Complain
+        </a>
     </div>
     <div class="col-12">
         <hr class="pb-0 mb-0">

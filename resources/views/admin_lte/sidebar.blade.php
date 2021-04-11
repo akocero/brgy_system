@@ -47,7 +47,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('residents.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i data-feather="circle" class="nav-icon" width='18' height="18"></i>
                                 <p>Residents</p>
                             </a>
                         </li>
@@ -55,7 +55,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('households.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i data-feather="circle" class="nav-icon" width='18' height="18"></i>
                                 <p>Households</p>
                             </a>
                         </li>
@@ -63,7 +63,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('businesses.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i data-feather="circle" class="nav-icon" width='18' height="18"></i>
                                 <p>Businesses</p>
                             </a>
                         </li>
@@ -71,7 +71,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('officials.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i data-feather="circle" class="nav-icon" width='18' height="18"></i>
                                 <p>Officials</p>
                             </a>
                         </li>
@@ -79,7 +79,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('resolutions.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i data-feather="circle" class="nav-icon" width='18' height="18"></i>
                                 <p>Resolutions</p>
                             </a>
                         </li>
@@ -145,7 +145,7 @@
                         {{-- <i class="nav-icon far fa-file-pdf"></i> --}}
                         <i data-feather="award" class="nav-icon" width='22' height="22"></i>
                         <p>
-                            Clearance & Permits
+                            Certificates
                             {{-- <i class="right fas fa-angle-left"></i> --}}
                             <i data-feather="chevron-left" class="right" width='16' height="16"></i>
                         </p>
@@ -154,7 +154,7 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Residents</p>
+                                <p>Resident</p>
                             </a>
                         </li>
                     </ul>
@@ -162,7 +162,7 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Households</p>
+                                <p>Cert. of Residency</p>
                             </a>
                         </li>
                     </ul>
@@ -170,7 +170,7 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Businesses</p>
+                                <p>Business Permit</p>
                             </a>
                         </li>
                     </ul>
