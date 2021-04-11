@@ -1,14 +1,15 @@
 @extends('layouts.main')
 
 
-@section("title","Edit Resident")
+@section("title","Resident")
 
 @section('content')
     <div class="card">
         <div class="col-12 pt-3 px-4 d-flex justify-content-between align-items-center">
-            <h4 class="h4">{{$resident->first_name}} details</h4>
-            <a style="float: right" href="{{ route('residents.index') }}" class="pr-2">
-                Back to residents
+            <h4 class="h4">Update {{Str::ucfirst($resident->last_name)}}, {{Str::ucfirst($resident->first_name)}}</h4>
+            <a style="float: right" href="{{ route('residents.index') }}" class="btn btn-link pr-0">
+                Resident List
+                <i data-feather="arrow-right" class="ml-1 mr-0" width='16' height="16"></i>
             </a>
         </div>
         
@@ -476,7 +477,7 @@
                 <hr>
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="submit" value="Save Changes" class="btn btn-success"> 
+                        <input type="submit" value="Save Changes" class="btn btn-custom-success float-right px-5"> 
                     </div>
                 </div>
                     

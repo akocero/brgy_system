@@ -62510,3 +62510,41 @@ ul#pills-tab {
 .nav-item.menu-open a p svg {
   transform: rotate(-90deg);
 }
+
+.tooltip-inner {
+  color: white;
+  background-color: #2c2c2c;
+}
+
+.tooltip.bs-tooltip-top .arrow:before, .tooltip.bs-tooltip-auto[x-placement^=top] .arrow:before {
+  border-top-color: #2c2c2c !important;
+}
+
+.btn-custom-success {
+  border: 1px solid #47CA98 !important;
+  transition: all 0.3s ease;
+  box-shadow: 0px 5px 10px rgba(71, 202, 152, 0.4) !important;
+  background-color: #47CA98;
+  color: white;
+}
+.btn-custom-success:hover {
+  color: white;
+  background-color: #3fc894;
+  box-shadow: 0px 15px 20px rgba(71, 202, 152, 0.4) !important;
+}
+
+.card .nav-link:hover, .navbar .nav-link:hover {
+  color: #47CA98 !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #47CA98;
+}
+
+.btn-link {
+  color: #36926f !important;
+}
+
+.card-list .card {
+  border: 1px solid #c5c5c5 !important;
+}

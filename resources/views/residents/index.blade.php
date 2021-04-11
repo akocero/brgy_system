@@ -5,11 +5,11 @@
 @section('content')
 <div class="card">
     <div class="col-12 pt-3 px-3 d-flex justify-content-between align-items-center">
-        <h4 class="h4">Something!</h4>
+        <h4 class="h4">Resident List</h4>
         {{-- <button type="button" class="btn btn-secondary btn-flat" data-toggle="modal" data-target="#exampleModal">
                 Create Data
         </button> --}}
-        <a href="{{ route('residents.create') }}" class="btn btn-flat btn-secondary">New Resident</a>
+        <a href="{{ route('residents.create') }}" class="btn btn-custom-success"><i data-feather="plus-square" color="white" class="mr-2" width='14' height="14"></i>New Resident</a>
     </div>
     <div class="col-12">
         <hr class="pb-0 mb-0">
