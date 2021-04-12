@@ -55,10 +55,16 @@
                                 {{ $resolution->number }}
                             </td>
                             <td>
-                                {{ $resolution->summary }}
+                                {{ substr($resolution->summary, 0, 30) }}...
                             </td>
                             <td>{{ $resolution->author }}</td>
-                            <td>{{ $resolution->status }}</td>
+                            <td>
+                                @if ($resolution->status == 'pending')
+                                    <span class="badge badge-danger">{{ $resolution->status }}</span>
+                                @else
+                                    <span class="badge badge-success">{{ $resolution->status }}</span>
+                                @endif
+                            </td>
                             <td>{{ $resolution->session_date }}</td>
                             
                             <td>

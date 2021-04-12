@@ -64,7 +64,7 @@
                 <span><strong>Republic of the Philippines</strong></span><br>
                 <span>Province of Bulacan</span><br>
                 <span>Municipality of Marilao</span><br><br>
-                <span><strong>Barangay Sta. Rosa 1 {{ app('request')->input('clerance_purpose') }} </strong></span><br>
+                <span><strong>Barangay Sta. Rosa 1</strong></span><br>
             </h2>
         </div>
         <div class="col-md-3 text-left pt-5">

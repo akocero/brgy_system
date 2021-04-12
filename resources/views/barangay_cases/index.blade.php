@@ -60,7 +60,11 @@
                             </td>
 
                             <td>
-                                {{ $barangay_case->status }} 
+                                @if ($barangay_case->status == 'pending')
+                                    <span class="badge badge-danger">{{ $barangay_case->status }}</span>
+                                @else
+                                    <span class="badge badge-success">{{ $barangay_case->status }}</span>
+                                @endif
                             </td>
                             
                             <td>

@@ -44,11 +44,8 @@
 
                             <div class="col-md-12">
                                 <input type="button" value="Print" id="print_clearance_btn" class="btn-block btn btn-custom-success" onclick="printClearance()">
-                                
-
-                                 
-
                             </div>
+                            
                         </div>
                     </form>
                 </div>
@@ -622,13 +619,13 @@
                 $('#clearance_purpose').removeClass('is-invalid');
                 $('#print_clearance_btn').attr('disabled', 'true').val('Opening in a new tab...');
                 let print = confirm('Are you sure you want to print clearance?');
-
+                const origin = window.location.origin;
                 if(print){
                     setTimeout(() => {
                         $('#clearance_purpose').val('');
                         $('#print_clearance_btn').removeAttr('disabled').val('Print');
                         $('#household_modal').modal('hide');
-                        window.open("{{ route('clearance.print', ['resident' => $resident->id, 'clerance_purpose' => 'local employment']) }}", '_blank');
+                        window.open(`${origin}/certificates/resident/{{ $resident->id }}/clearance?clearance_purpose=${clearance_purpose}`, '_blank');
                     }, 2000)
                 }else{
                     $('#clearance_purpose').val('');
