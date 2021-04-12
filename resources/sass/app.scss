@@ -192,6 +192,31 @@ ul#pills-tab {
     }
 }
 
+.bg-custom-olive {
+    background-color: #47CA98;
+    color: white;
+}
+
+.bg-custom-orange {
+    background-color: #ffa726;
+    color: white;
+}
+
+.bg-custom-violet {
+    background-color: #AF7AC5;
+    color: white;
+}
+
+.info-box {
+    .info-box-icon {
+        
+        svg {
+            opacity: 0.4;
+            transform: rotate(-35deg) !important;
+        }
+    }
+}
+
 
 
 

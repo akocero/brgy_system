@@ -19,15 +19,15 @@
                         {{-- <i class="nav-icon far fa-file-pdf"></i> --}}
                         <i data-feather="home" class="nav-icon" width='19' height="19"></i>
                         <p>
-                            Dashboard
+                            Home
                             {{-- <i class="right fas fa-angle-left"></i> --}}
                             <i data-feather="chevron-left" class="right" width='16' height="16"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <a href="{{ route('dashboard.index') }}" class="nav-link">
+                                <i data-feather="bar-chart-2" class="nav-icon" width='18' height="18"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>

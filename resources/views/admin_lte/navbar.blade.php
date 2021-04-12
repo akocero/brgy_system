@@ -16,7 +16,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" role="button">
+            <a class="nav-link" href="{{ route('dashboard.index')}}" role="button">
                 <i data-feather="home" class="mr-2" width='18' height="18"></i>
                 
                 {{-- {{ auth()->user()->name }} --}}

@@ -1,4 +1,4 @@
-<footer class="main-footer text-sm">
+<footer class="main-footer text-sm border-top-0">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
         Version 1.0.1
