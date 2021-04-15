@@ -162,9 +162,15 @@ ul#pills-tab {
         color: white;
 
         &:hover {
+            transform: translateY(-2px);
             color: white;
             background-color: darken(#47CA98, 2);
             box-shadow: 0px 15px 20px rgba(#47CA98, 0.4) !important;
+        }
+
+        &:active {
+            transform: translateY(0);
+            box-shadow: 0px 5px 10px rgba(#47CA98, 0.4) !important;
         }
     }
 
