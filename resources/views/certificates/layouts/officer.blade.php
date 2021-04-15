@@ -1,30 +1,30 @@
 <div class="col-md-3 officer">
     <ul class="text-center">
         <li>
-            <h3 class="">Council Members</h3>
+            Council Members
         </li>
         <li>
             <ul>
                 <li>
-                    <h4>Eugene Paul M. Badato</h4>
+                    Eugene Paul M. Badato
                 </li>
                 <li>
-                    <h4>Eugene Paul M. Badato</h4>
+                    Eugene Paul M. Badato
                 </li>
                 <li>
-                    <h4>Eugene Paul M. Badato</h4>
+                    Eugene Paul M. Badato
                 </li>
                 <li>
-                    <h4>Eugene Paul M. Badato</h4>
+                    Eugene Paul M. Badato
                 </li>
                 <li>
-                    <h4>Eugene Paul M. Badato</h4>
+                    Eugene Paul M. Badato
                 </li>
-                    <li>
-                    <h4>Eugene Paul M. Badato</h4>
+                <li>
+                    Eugene Paul M. Badato
                 </li>
-                    <li>
-                    <h4>Eugene Paul M. Badato</h4>
+                <li>
+                    Eugene Paul M. Badato
                 </li>
             </ul>
         </li>
@@ -32,23 +32,23 @@
         <li>
             <ul>
                 <li>
-                    <h4 class="">SK CHARIMAN NAME</h4>
+                    SK CHARIMAN NAME
                     <label>Barangay Secretary</label>
                 </li>
                 <li>
-                    <h4 class="">SK CHARIMAN NAME</h4>
+                    SK CHARIMAN NAME
                     <label>Barangay Treasurer</label>
                 </li>
                 <li>
-                    <h4 class="">SK CHARIMAN NAME</h4>
+                    SK CHARIMAN NAME
                     <label>Barangay Administrator</label>
                 </li>
                 <li>
-                    <h4 class="">SK CHARIMAN NAME</h4>
+                    SK CHARIMAN NAME
                     <label>Barangay Clerk</label>
                 </li>
                 <li>
-                    <h4 class="">SK CHARIMAN NAME</h4>
+                    SK CHARIMAN NAME
                     <label>Barangay Record Keeper</label>
                 </li>
             </ul>
