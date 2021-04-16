@@ -6,7 +6,7 @@
 @section('content')
     <div
     class="modal fade show"
-    id="household_modal"
+    id="certificate_modal"
     tabindex="-1"
     role="dialog"
     aria-labelledby="exampleModalLabel"
@@ -22,7 +22,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                
+
                 <div class="modal-body">
                     <form action="" method="get">
                         @csrf
@@ -43,9 +43,9 @@
                             </div>
 
                             <div class="col-md-12">
-                                <input type="button" value="Print" id="print_clearance_btn" class="btn-block btn btn-custom-success" onclick="printClearance()">
+                                <input type="button" value="Print" id="print_clearance_btn" class="btn-block btn btn-custom-success" onclick="printCertificate()">
                             </div>
-                            
+
                         </div>
                     </form>
                 </div>
@@ -59,7 +59,7 @@
     </div>
     @if (session('status'))
         <div class="alert alert-{{ str_contains(session('status'), 'Updated') ? 'primary' : 'success' }} alert-dismissible fade show" role="alert">
-            
+
             {{  session('status') }}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -74,7 +74,7 @@
                 <i data-feather="arrow-right" class="ml-1 mr-0" width='16' height="16"></i>
             </a>
         </div>
-        
+
         <div class="card-body">
             <form action="#" method="POST" id="resident_form">
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -113,10 +113,10 @@
                             <span class="dropdown-header">Print Certificates</span>
                             <div class="dropdown-divider"></div>
                             <a
-                            role="button" 
-                            class="dropdown-item" 
-                            data-toggle="modal" 
-                            data-target="#household_modal">
+                            role="button"
+                            class="dropdown-item"
+                            data-toggle="modal"
+                            data-target="#certificate_modal">
                                 Brgy. Clearance
                             </a>
                             <div class="dropdown-divider"></div>
@@ -124,8 +124,8 @@
                                 Cert. of Residency
                             </a>
                         </div>
-                    </li>      
-                    
+                    </li>
+
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
                     {{-- Personal info tab  --}}
@@ -323,7 +323,7 @@
                             </div>
 
                         </div>
-                        
+
                     </div>
 
                     {{-- End Personal info tab  --}}
@@ -343,7 +343,7 @@
                                 @enderror
                             </div>
 
-                            
+
 
                             <div class="form-group col-md-4">
                                 <label for="mobile_no">Mobile No (Optional)</label>
@@ -402,7 +402,7 @@
                             </div>
 
                         </div>
-                        
+
                     </div>
 
                     <div class="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab">
@@ -411,11 +411,11 @@
 
                             @if ($resident->image_path)
                                 <div class="col-md-4">
-                                    <div class="image-container">   
+                                    <div class="image-container">
                                         <img src="{{ asset('storage/' . $resident->image_path) }}" alt="" class="img-thumbnail">
                                         <a class="btn-delete-image"><span>&#10005;</span></a>
                                     </div>
-                                    
+
                                 </div>
                             @else
                                 <div class="col-md-4">
@@ -423,10 +423,10 @@
                                 </div>
                             @endif
 
-                            
+
 
                         </div>
-                        
+
                     </div>
 
                     <div class="tab-pane fade" id="pills-other-info" role="tabpanel" aria-labelledby="pills-other-info-tab">
@@ -444,7 +444,7 @@
                                 @enderror
                             </div>
 
-                            
+
 
                             <div class="form-group col-md-4">
                                 <label for="educational_attainment">Educational Attainment</label>
@@ -533,16 +533,16 @@
             </form>
         </div>
     </div>
-    
+
     <div class="card">
         @if ($resident->household)
             <div class="col-12 pt-3 px-3">
                 <h4 class="h4">{{$resident->household->name}}</h4>
                 <hr class="pb-0 mb-0">
             </div>
-            
+
             <div class="card-body">
-                <div class="table-responsive">   
+                <div class="table-responsive">
                     <table class="table table-sm table-bordered table-striped">
                         <thead>
                             <tr>
@@ -570,7 +570,7 @@
         @else
             <div class="col-12 pt-3 px-3">
                 <h4 class="h4">
-                    No household found! 
+                    No household found!
                 </h4>
                 <a href="{{ route('residents.edit', $resident->id) }}" class="pr-2">
                     Add household
@@ -609,30 +609,37 @@
             });
         }
 
-        function printClearance() {
+        function printCertificate() {
             let clearance_purpose = $('#clearance_purpose').val();
 
             if(!clearance_purpose) {
                 $('#clearance_purpose').addClass('is-invalid');
                 alert('Please check your inputs!');
             }else{
+
                 $('#clearance_purpose').removeClass('is-invalid');
                 $('#print_clearance_btn').attr('disabled', 'true').val('Opening in a new tab...');
                 let print = confirm('Are you sure you want to print clearance?');
                 const origin = window.location.origin;
+
                 if(print){
+
                     setTimeout(() => {
+
                         $('#clearance_purpose').val('');
                         $('#print_clearance_btn').removeAttr('disabled').val('Print');
-                        $('#household_modal').modal('hide');
-                        window.open(`${origin}/certificates/resident/{{ $resident->id }}/clearance?clearance_purpose=${clearance_purpose}`, '_blank');
-                    }, 2000)
+                        $('#certificate_modal').modal('hide');
+
+                        window.open(`${origin}/certificates/resident/{{ $resident->id }}?certificate_type=clearance&clearance_purpose=${clearance_purpose}`, '_blank');
+
+                    }, 1000);
+
                 }else{
                     $('#clearance_purpose').val('');
                     $('#print_clearance_btn').removeAttr('disabled').val('Print');
-                    $('#household_modal').modal('hide');
+                    $('#certificate_modal').modal('hide');
                 }
-                
+
             }
         }
 

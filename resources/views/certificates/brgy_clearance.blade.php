@@ -13,7 +13,7 @@
     <p class="mb-5 pdf-text-md">He / She is a peaceful and law abiding citizen.</p>
 
     <p class="pdf-text-md text-justify">
-        This Certification is issued upon request of interested party Party Name in connection with his/her application for <span class="text-bold">{{ app('request')->clearance_purpose }}</span>
+        This Certification is issued upon request of interested party Party Name in connection with his/her application for <span class="text-bold">{{ $clearance_purpose }}</span>
     </p>
 
     <p class="pdf-text-md">
