@@ -70,11 +70,25 @@
                 width: 100%;
             }
 
-            .footer .footer__img {
+            .footer .footer__person-img {
                 width: 35%;
                 position: absolute;
                 top: -65%;
-                right: 4%;
+                right: 1rem;
+            }
+
+            .footer .footer__signature-img {
+                width: 27%;
+                position: absolute;
+                top: -50%;
+                right: 27%;
+            }
+
+            .footer .footer__person_name {
+                width: 50%;
+                position: absolute;
+                top: -32%;
+                right: 15%;
             }
 
             .footer .footer__text-content {padding-left: 2rem;}
@@ -93,7 +107,7 @@
         }
     </style>
 </head>
-<body id="body">
+<body id="body" onload="window.print()">
 
     <div class="paper"> 
         @include('certificates.layouts.header')
