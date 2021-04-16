@@ -35,6 +35,27 @@
                     <li class="nav-item">
                         <a class="nav-link" id="pills-date-info-tab" data-toggle="pill" href="#pills-date-info" role="tab" aria-controls="pills-date-info" aria-selected="false">Date Issued/Expiration</a>
                     </li>
+                    <li class="nav-item dropdown ml-auto btn-group">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i data-feather="printer" width='18' height="18"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                            <span class="dropdown-header">Print Documents</span>
+                            <div class="dropdown-divider"></div>
+                            <a
+                            role="button"
+                            class="dropdown-item"
+                            data-toggle="modal"
+                            data-target="#certificate_modal" 
+                            onclick="printCertificate()">
+                                Business Clearance
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                Cert. of Residency
+                            </a>
+                        </div>
+                    </li>
                 </ul>
                 {{-- End Tabs  --}}
                 <div class="tab-content" id="pills-tabContent">
@@ -249,6 +270,48 @@
             select.forEach(item => {
                 item.setAttribute('disabled','true');
             });
+        }
+
+        function printCertificate() {
+
+            let print = confirm('Are you sure you want to print permit?');
+            const origin = window.location.origin;
+
+            if(print){
+                window.open(`${origin}/certificates/business/{{ $business->id }}?certificate_type=permit`, '_blank');
+            }
+            
+            // let clearance_purpose = $('#clearance_purpose').val();
+
+            // if(!clearance_purpose) {
+            //     $('#clearance_purpose').addClass('is-invalid');
+            //     alert('Please check your inputs!');
+            // }else{
+
+            //     $('#clearance_purpose').removeClass('is-invalid');
+            //     $('#print_clearance_btn').attr('disabled', 'true').val('Opening in a new tab...');
+            //     let print = confirm('Are you sure you want to print clearance?');
+            //     const origin = window.location.origin;
+
+            //     if(print){
+
+            //         setTimeout(() => {
+
+            //             $('#clearance_purpose').val('');
+            //             $('#print_clearance_btn').removeAttr('disabled').val('Print');
+            //             $('#certificate_modal').modal('hide');
+
+            //             window.open(`${origin}/certificates/resident/{{ $business->id }}?certificate_type=clearance&clearance_purpose=${clearance_purpose}`, '_blank');
+
+            //         }, 1000);
+
+            //     }else{
+            //         $('#clearance_purpose').val('');
+            //         $('#print_clearance_btn').removeAttr('disabled').val('Print');
+            //         $('#certificate_modal').modal('hide');
+            //     }
+
+            // }
         }
 
     </script>

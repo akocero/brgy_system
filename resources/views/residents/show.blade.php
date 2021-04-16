@@ -100,14 +100,14 @@
                     </li>
 
                     <li class="nav-item ml-auto">
-                        <a style="float: right" href="{{ route('residents.edit', $resident->id) }}" class="pr-2 nav-link" role="button" data-toggle="tooltip" data-placement="top" title="Edit Resident">
+                        <a style="float: right" href="{{ route('residents.edit', $resident->id) }}" class="pr-2 nav-link" role="button" data-toggle="tooltip" data-placement="top" title="Edit Info">
                             <i data-feather="edit" class="ml-1" width='16' height="16"></i>
                         </a>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i data-feather="printer" width='18' height="18"></i>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i data-feather="printer" width='16' height="16"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             <span class="dropdown-header">Print Certificates</span>

@@ -11,7 +11,7 @@ class CertificateController extends Controller
     public function resident(Resident $resident)
     {
 
-        if(request()->certificate_type === 'clearance') {
+        if (request()->certificate_type === 'clearance') {
             $clearance_purpose = request()->clearance_purpose;
             return view('certificates.brgy_clearance', compact('resident', 'clearance_purpose'));
         }
@@ -20,15 +20,12 @@ class CertificateController extends Controller
             $clearance_purpose = request()->clearance_purpose;
             return view('certificates.brgy_cert_of_residency', compact('resident', 'clearance_purpose'));
         }
-
     }
 
     public function business(Business $business)
     {
-
         if (request()->certificate_type === 'permit') {
-            $clearance_purpose = request()->clearance_purpose;
-            return view('certificates.brgy_business_permit', compact('resident', 'clearance_purpose'));
+            return view('certificates.brgy_business_permit', compact('business'));
         }
     }
 }

@@ -20,5 +20,10 @@
             </table>
         </p>
     </div>
-    <img class="footer__img" src="{{ asset('storage/images/logo/captain_image.png')}}" alt="">
+    <img class="footer__person-img" src="{{ asset('storage/images/logo/captain_image.png')}}" alt="">
+    <img class="footer__signature-img" src="{{ asset('storage/images/logo/captain_signature.png') }}" alt="">
+    <div class="footer__person_name text-center">
+        <h4 class="text-bold">EUGENE PAUL M. BADATO</h4>
+        <h5>BARANGAY CAPTAIN</h5>
+    </div>
 </div>
