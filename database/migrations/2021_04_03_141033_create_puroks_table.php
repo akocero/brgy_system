@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Purok;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,6 +20,16 @@ class CreatePuroksTable extends Migration
             $table->string('details');
             $table->timestamps();
         });
+
+        Purok::create([
+            "name" => "purok 1",
+            "details" => "purok 1 Details",
+        ]);
+
+        Purok::create([
+            "name" => "purok 2",
+            "details" => "purok 2 Details",
+        ]);
     }
 
     /**
