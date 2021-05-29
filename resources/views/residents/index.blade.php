@@ -52,10 +52,10 @@
                             </td>
                             <td>{{ $resident->email }}</td>
                             <td>
-                                <a class="btn btn-sm btn-dafault" href="{{ route('residents.edit', $resident->id) }}" data-toggle="tooltip" data-placement="top" title="Edit Info.">
+                                <a class="btn btn-sm btn-dafault" href="{{ route('residents.edit', $resident->id) }}" data-toggle="tooltip" data-placement="bottom" title="Edit Info.">
                                     <i data-feather="edit" width='14' height="14"></i>
                                 </a>
-                                <a class="btn btn-sm btn-dafault" href="{{ route('residents.show', $resident->id) }}" data-toggle="tooltip" data-placement="top" title="View Info.">
+                                <a class="btn btn-sm btn-dafault" href="{{ route('residents.show', $resident->id) }}" data-toggle="tooltip" data-placement="bottom" title="View Info.">
                                     <i data-feather="folder" width='14' height="14"></i>
                                 </a>
                                 {{-- <button class="btn btn-sm btn-regular">
