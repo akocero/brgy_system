@@ -20,13 +20,13 @@ class ResidentController extends Controller
         if (!is_null($request->search)) {
             $residents = Resident::where('last_name', 'like', '%' . request()->search . '%')
                 ->orWhere('first_name', 'like', '%' . request()->search . '%')
-                ->orderBy('last_name')
+                ->latest()
                 ->paginate(10);
             $residents->appends(['search' => $request->search]);
 
             $search = request()->search;
         } else {
-            $residents = Resident::orderBy('last_name')->paginate(10);
+            $residents = Resident::latest()->paginate(10);
         }
 
         return view('residents.index', compact('residents', 'search'));
