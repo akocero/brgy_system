@@ -11,8 +11,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>@yield('title') | Brgy IS v2</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+  {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> --}}
+  <link rel="stylesheet" href={{ asset('css/all.min.css') }}>
   <link rel="stylesheet" href="/css/app.css">
   @yield('custom_styles')
 </head>
@@ -71,15 +71,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
       if(activeTab){
           $('#pills-tab a[href="' + activeTab + '"]').tab('show');
       }
-        
+
       checkActiveLinks();
   });
 
 
   function checkActiveLinks() {
-    
+
       var navlinks = document.querySelectorAll('.nav-treeview .nav-link');
-      var url      = window.location.href;    
+      var url      = window.location.href;
       navlinks.forEach(link => {
         if(url.includes(link.href )){
           // console.log(link.href);
@@ -101,9 +101,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     localStorage.getItem("sidebar") ? localStorage.removeItem('sidebar') : localStorage.setItem("sidebar", "collapse");
   }
 
-  
 
-  
+
+
 </script>
 @yield('scripts')
 </body>

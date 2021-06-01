@@ -7,7 +7,26 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import '~admin-lte/dist/css/adminlte.css';
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap');
+
+@font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Regular.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-SemiBold.ttf") format('truetype');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Source Sans Pro";
+    src: url("/fonts/SourceSansPro-Bold.ttf") format('truetype');
+    font-weight: 700;
+}
 
 body {
     font-family: 'Source Sans Pro', sans-serif !important;
@@ -61,7 +80,7 @@ label {
     border-bottom: 2px solid #47CA98;
     border-radius: 0;
     padding-bottom: 1rem;
-    
+
 }
 
 .card form .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -99,28 +118,10 @@ ul#pills-tab {
         color: white;
     }
 
-    
+
 }
 
-.nav-item.menu-is-opening {
-    a {
-        p {
-            svg {
-                transform: rotate(-90deg);
-            }
-        }
-    }
-}
 
-.nav-item.menu-open {
-    a {
-        p {
-            svg {
-                transform: rotate(-90deg);
-            }
-        }
-    }
-}
 
 // .nav-item {
 //     a {
@@ -133,10 +134,10 @@ ul#pills-tab {
 
 //     }
 
-        
+
 // }
 
-// .tooltip-arrow, 
+// .tooltip-arrow,
 // .tooltip > .tooltip-inner {
 //     background-color: #f00;
 // }
@@ -153,7 +154,7 @@ ul#pills-tab {
 }
 
 .btn {
-    
+
     &-custom-success {
         border: 1px solid #47CA98 !important;
         transition: all .3s ease;
@@ -174,7 +175,7 @@ ul#pills-tab {
         }
     }
 
-    
+
 }
 .card, .navbar {
     .nav-link:hover {
@@ -182,7 +183,7 @@ ul#pills-tab {
     }
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link { 
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #47CA98;
 }
 
@@ -215,12 +216,16 @@ ul#pills-tab {
 
 .info-box {
     .info-box-icon {
-        
+
         svg {
             opacity: 0.4;
             transform: rotate(-35deg) !important;
         }
     }
+}
+
+.icon-view-all {
+    transform: rotate(-180deg);
 }
 
 
