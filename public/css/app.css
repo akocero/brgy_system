@@ -62518,14 +62518,6 @@ ul#pills-tab {
   color: white;
 }
 
-.nav-item.menu-is-opening a p svg {
-  transform: rotate(-90deg);
-}
-
-.nav-item.menu-open a p svg {
-  transform: rotate(-90deg);
-}
-
 .tooltip-inner {
   color: white;
   background-color: #2c2c2c;
@@ -62587,4 +62579,8 @@ ul#pills-tab {
 .info-box .info-box-icon svg {
   opacity: 0.4;
   transform: rotate(-35deg) !important;
+}
+
+.icon-view-all {
+  transform: rotate(-180deg);
 }

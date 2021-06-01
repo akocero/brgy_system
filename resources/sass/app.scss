@@ -121,25 +121,7 @@ ul#pills-tab {
 
 }
 
-.nav-item.menu-is-opening {
-    a {
-        p {
-            svg {
-                transform: rotate(-90deg);
-            }
-        }
-    }
-}
 
-.nav-item.menu-open {
-    a {
-        p {
-            svg {
-                transform: rotate(-90deg);
-            }
-        }
-    }
-}
 
 // .nav-item {
 //     a {
@@ -240,6 +222,10 @@ ul#pills-tab {
             transform: rotate(-35deg) !important;
         }
     }
+}
+
+.icon-view-all {
+    transform: rotate(-180deg);
 }
 
 

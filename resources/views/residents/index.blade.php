@@ -9,7 +9,7 @@
         {{-- <button type="button" class="btn btn-secondary btn-flat" data-toggle="modal" data-target="#exampleModal">
                 Create Data
         </button> --}}
-        <a href="{{ route('residents.create') }}" class="btn btn-custom-success"><i data-feather="plus-circle" color="white" class="mr-2" width='18' height="18"></i>New Resident</a>
+        <a href="{{ route('residents.create') }}" class="btn btn-custom-success"><i class="far fa-plus-square mr-2"></i></i>New Resident</a>
     </div>
     <div class="col-12">
         <hr class="pb-0 mb-0">
@@ -53,10 +53,10 @@
                             <td>{{ $resident->email }}</td>
                             <td>
                                 <a class="btn btn-sm btn-dafault" href="{{ route('residents.edit', $resident->id) }}" data-toggle="tooltip" data-placement="bottom" title="Edit Info.">
-                                    <i data-feather="edit" width='14' height="14"></i>
+                                    <i class="far fa-edit"></i>
                                 </a>
                                 <a class="btn btn-sm btn-dafault" href="{{ route('residents.show', $resident->id) }}" data-toggle="tooltip" data-placement="bottom" title="View Info.">
-                                    <i data-feather="folder" width='14' height="14"></i>
+                                    <i class="far fa-folder-open"></i>
                                 </a>
                                 {{-- <button class="btn btn-sm btn-regular">
                                     <i class="far fa-trash-alt"></i>
