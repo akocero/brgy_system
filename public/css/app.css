@@ -62576,6 +62576,11 @@ ul#pills-tab {
   color: white;
 }
 
+.bg-custom-danger {
+  background-color: #EC7063;
+  color: white;
+}
+
 .info-box .info-box-icon svg {
   opacity: 0.4;
   transform: rotate(-35deg) !important;

@@ -36,6 +36,10 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" id="pills-medical-history-tab" data-toggle="pill" href="#pills-medical-history" role="tab" aria-controls="pills-medical-history" aria-selected="false">Medical history</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" id="pills-other-info-tab" data-toggle="pill" href="#pills-other-info" role="tab" aria-controls="pills-other-info" aria-selected="false">Other Info.</a>
                     </li>
                     
@@ -324,6 +328,56 @@
 
                         </div>
                         
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-medical-history" role="tabpanel" aria-labelledby="pills-medical-history-tab">
+
+                        <div class="row">
+
+                            <div class="form-group col-md-3">
+                                <label for="covid_positive">Covid Positive</label>
+
+                                <select class="custom-select  @error('covid_positive') {{ 'is-invalid' }}@enderror"
+                                        name="covid_positive" id="covid_positive">
+                                    <option value="0" {{ $resident->covid_positive  == '0' ? 'selected' : ''}}>No</option>
+                                    <option value="1" {{ $resident->covid_positive  == '1' ? 'selected' : ''}}>Yes / Active</option>
+                                    <option value="2" {{ $resident->covid_positive  == '2' ? 'selected' : ''}}>Yes / Recovered</option>
+                                </select>
+
+                                @error('covid_positive')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="covid_symptoms">Covid Symptoms</label>
+
+                                <select class="custom-select  @error('covid_symptoms') {{ 'is-invalid' }}@enderror"
+                                        name="covid_symptoms" id="covid_symptoms">
+                                    <option value="">Choose ...</option>
+                                    <option value="0" {{ $resident->covid_symptoms  == '0' ? 'selected' : ''}}>Not Sure</option>
+                                    <option value="1" {{ $resident->covid_symptoms  == '1' ? 'selected' : ''}}>Asymptomatic</option>
+                                    <option value="2" {{ $resident->covid_symptoms  == '2' ? 'selected' : ''}}>Symptomatic</option>
+                                </select>
+
+                                @error('covid_symptoms')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="medical_remarks">Medical History Remarks (Optional)</label>
+                                <textarea type="text" class="form-control @error('medical_remarks') {{ 'is-invalid' }}@enderror" id="medical_remarks" name="medical_remarks" placeholder="Type Firstname..." value="">{{ $resident->medical_remarks }}</textarea>
+
+                                @error('medical_remarks')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                        </div>
+
                     </div>
 
                     <div class="tab-pane fade" id="pills-other-info" role="tabpanel" aria-labelledby="pills-other-info-tab">

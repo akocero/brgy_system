@@ -118,6 +118,9 @@ class ResidentController extends Controller
             'occupation' => '',
             'educational_attainment' => '',
             'image_path' => 'sometimes|file|image|max:2000',
+            'covid_symptoms' => '',
+            'covid_positive' => '',
+            'medical_remarks' => '',
         ]);
     }
 

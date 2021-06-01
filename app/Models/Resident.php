@@ -17,6 +17,11 @@ class Resident extends Model
         return $this->belongsTo(Household::class);
     }
 
+    public function covid_patient()
+    {
+        return $this->belongsTo(CovidPatient::class);
+    }
+
     public function purok()
     {
         return $this->belongsTo(Purok::class);

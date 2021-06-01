@@ -135,10 +135,10 @@ aria-hidden="true">
         <button
             type="button"
             id="open_button"
-            class="btn btn-secondary btn-flat"
+            class="btn btn-custom-success"
             data-toggle="modal"
             data-target="#household_modal">
-                New Household
+                <i class="far fa-plus-square mr-2"></i>New Household
         </button>
 
     </div>

@@ -96,19 +96,23 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" id="pills-medical-history-tab" data-toggle="pill" href="#pills-medical-history" role="tab" aria-controls="pills-medical-history" aria-selected="false">Medical history</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" id="pills-other-info-tab" data-toggle="pill" href="#pills-other-info" role="tab" aria-controls="pills-other-info" aria-selected="false">Other Info.</a>
                     </li>
 
                     <li class="nav-item ml-auto">
                         <a style="float: right" href="{{ route('residents.edit', $resident->id) }}" class="pr-2 nav-link" role="button" data-toggle="tooltip" data-placement="top" title="Edit Info">
-                            <i class="fas fa-edit"></i>
+                            <i data-feather="edit" width='16' height="16"></i>
                         </a>
                     </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
                             {{-- <i data-feather="printer" width='16' height="16"></i> --}}
-                            <i class="fas fa-print"></i>
+                            <i data-feather="printer" width='16' height="16"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             <span class="dropdown-header">Print Certificates</span>
@@ -430,11 +434,62 @@
 
                     </div>
 
-                    <div class="tab-pane fade" id="pills-other-info" role="tabpanel" aria-labelledby="pills-other-info-tab">
+                    <div class="tab-pane fade" id="pills-medical-history" role="tabpanel" aria-labelledby="pills-medical-history-tab">
 
                         <div class="row">
 
                             <div class="form-group col-md-3">
+                                <label for="covid_positive">Covid Positive</label>
+
+                                <select class="custom-select  @error('covid_positive') {{ 'is-invalid' }}@enderror"
+                                        name="covid_positive" id="covid_positive">
+                                    <option value="">Choose ...</option>
+                                    <option value="0" {{ $resident->covid_positive  == '0' ? 'selected' : ''}}>No</option>
+                                    <option value="1" {{ $resident->covid_positive  == '1' ? 'selected' : ''}}>Yes / Active</option>
+                                    <option value="2" {{ $resident->covid_positive  == '2' ? 'selected' : ''}}>Yes / Recovered</option>
+                                </select>
+
+                                @error('covid_positive')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="covid_symptoms">Covid Symptoms</label>
+
+                                <select class="custom-select  @error('covid_symptoms') {{ 'is-invalid' }}@enderror"
+                                        name="covid_symptoms" id="covid_symptoms">
+                                    <option value="">Choose ...</option>
+                                    <option value="0" {{ $resident->covid_symptoms  == '0' ? 'selected' : ''}}>Not Sure</option>
+                                    <option value="1" {{ $resident->covid_symptoms  == '1' ? 'selected' : ''}}>Asymptomatic</option>
+                                    <option value="2" {{ $resident->covid_symptoms  == '2' ? 'selected' : ''}}>Symptomatic</option>
+                                </select>
+
+                                @error('covid_symptoms')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="medical_remarks">Medical History Remarks (Optional)</label>
+                                <textarea type="text" class="form-control @error('medical_remarks') {{ 'is-invalid' }}@enderror" id="medical_remarks" name="medical_remarks" placeholder="Type Firstname..." value="">{{ $resident->medical_remarks }}</textarea>
+
+                                @error('medical_remarks')
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-other-info" role="tabpanel" aria-labelledby="pills-other-info-tab">
+
+                        <div class="row">
+
+                            <div class="form-group col-md-6">
                                 <label for="household_id">Household (Optional)</label>
                                 <input type="text" class="form-control @error('household_id') {{ 'is-invalid' }}@enderror" id="household_id" name="household_id" placeholder="Type Firstname..." value="{{ $resident->household->name ?? 'N/A' }}">
 
@@ -447,7 +502,7 @@
 
 
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label for="educational_attainment">Educational Attainment</label>
 
                                 <select class="custom-select  @error('educational_attainment') {{ 'is-invalid' }}@enderror"
@@ -462,7 +517,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label for="employment_status">Employment Status</label>
 
                                 <select class="custom-select  @error('employment_status') {{ 'is-invalid' }}@enderror"
@@ -478,7 +533,7 @@
                             </div>
 
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-2">
                                 <label for="complexion">Complexion (Optional)</label>
                                 <input type="text" class="form-control @error('complexion') {{ 'is-invalid' }}@enderror" id="complexion" name="complexion" placeholder="Type Firstname..." value="{{ $resident->complexion  }}">
 
@@ -489,7 +544,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="blood_type">Blood Type (Optional)</label>
                                 <input type="text" class="form-control @error('blood_type') {{ 'is-invalid' }}@enderror" id="blood_type" name="blood_type" placeholder="Type Firstname..." value="{{ $resident->blood_type  }}">
 
@@ -500,7 +555,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="is_disabled">Person with disablity</label>
 
                                 <select class="custom-select  @error('is_disabled') {{ 'is-invalid' }}@enderror"
