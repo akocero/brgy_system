@@ -4,12 +4,20 @@
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button" onclick="toggleSidebarDocked()" id="sidebar_docker">
-                <i class="fas fa-bars"></i>
+                <i data-feather="sidebar" width='18' height="18"></i>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item ml-1">
             <a class="nav-link" onclick="window.location.reload()" role="button">
-                <i class="fas fa-sync-alt"></i>
+                <i data-feather="refresh-cw" width='18' height="18"></i>
+                {{-- {{ auth()->user()->name }} --}}
+                {{-- Refresh --}}
+            </a>
+        </li>
+
+        <li class="nav-item ml-1">
+            <a class="nav-link" href={{ route('dashboard.index')}}>
+                <i data-feather="home" width='18' height="18"></i>
                 {{-- {{ auth()->user()->name }} --}}
                 {{-- Refresh --}}
             </a>
@@ -22,7 +30,7 @@
     
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-bell"></i>
+                <i data-feather="bell" width='18' height="18"></i>
                 <span class="badge badge-danger navbar-badge">15</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -48,7 +56,7 @@
         </li>
         <li class="nav-item ml-2">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                <i class="far fa-user"></i>
+                <i data-feather="user" width='18' height="18"></i>
                 {{-- {{ auth()->user()->name }} --}}
                 John Doe
             </a>

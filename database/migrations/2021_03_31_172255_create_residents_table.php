@@ -51,7 +51,10 @@ class CreateResidentsTable extends Migration
             $table->string('occupation')->nullable();
             // educ info
             $table->string('educational_attainment')->nullable();
-
+            // medical history
+            $table->tinyInteger('covid_positive')->nullable();
+            $table->tinyInteger('covid_symptoms')->nullable();
+            $table->text('medical_remarks')->nullable();
 
             $table->timestamps();
         });

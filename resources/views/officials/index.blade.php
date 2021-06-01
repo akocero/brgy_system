@@ -10,7 +10,8 @@
                 Create Data
         </button> --}}
         
-        <a href="{{ route('officials.create') }}" class="btn btn-success"><i data-feather="plus-circle" width='18' height="18" class="mr-2"></i>New Official</a>
+        <a href="{{ route('officials.create') }}" class="btn btn-custom-success"><i class="far fa-plus-square mr-2"></i>New Official</a>
+
     </div>
     <div class="col-12">
         <hr class="pb-0 mb-0">
