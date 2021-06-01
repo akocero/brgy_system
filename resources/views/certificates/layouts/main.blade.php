@@ -44,6 +44,10 @@
         }
          
         @media print {
+            #body .paper {
+                font-family: sans-serif;
+                color: rgb(19, 19, 19) !important;
+            }
             .pdf-text-md {
                 font-size: 1.5rem !important; 
                 font-weight: 400;
@@ -107,7 +111,7 @@
         }
     </style>
 </head>
-<body id="body" onload="window.print()">
+<body id="body">
 
     <div class="paper"> 
         @include('certificates.layouts.header')
@@ -124,3 +128,8 @@
 
 </body>
 </html>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        window.print();
+    });
+</script>
