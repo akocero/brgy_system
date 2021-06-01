@@ -52417,6 +52417,22 @@ a.text-muted:hover {
 }
 /*# sourceMappingURL=adminlte.css.map */
 @charset "UTF-8";
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/fonts/SourceSansPro-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/fonts/SourceSansPro-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/fonts/SourceSansPro-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -62418,22 +62434,6 @@ h3 {
     color: inherit;
     border-color: #dee2e6;
   }
-}
-@font-face {
-  font-family: "Source Sans Pro";
-  src: url("/fonts/SourceSansPro-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Source Sans Pro";
-  src: url("/fonts/SourceSansPro-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-}
-@font-face {
-  font-family: "Source Sans Pro";
-  src: url("/fonts/SourceSansPro-Bold.ttf") format("truetype");
-  font-weight: 700;
 }
 body {
   font-family: "Source Sans Pro", sans-serif !important;

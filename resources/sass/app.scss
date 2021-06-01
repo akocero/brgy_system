@@ -1,14 +1,3 @@
-// Fonts
-// @import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
-@import 'variables';
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-@import '~admin-lte/dist/css/adminlte.css';
-// @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap');
-
 @font-face {
     font-family: "Source Sans Pro";
     src: url("/fonts/SourceSansPro-Regular.ttf") format('truetype');
@@ -27,6 +16,13 @@
     src: url("/fonts/SourceSansPro-Bold.ttf") format('truetype');
     font-weight: 700;
 }
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import '~admin-lte/dist/css/adminlte.css';
 
 body {
     font-family: 'Source Sans Pro', sans-serif !important;
