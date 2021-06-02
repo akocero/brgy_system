@@ -16,7 +16,7 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-chart-bar"></i>
+                        <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Dashboard
                             <i class="right fas fa-angle-left"></i>
@@ -33,7 +33,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-folder"></i>
+                        <i class="nav-icon fas fa-database"></i>
                         <p>
                             Data Entry
                             <i class="right fas fa-angle-left"></i>
@@ -92,6 +92,35 @@
                             <a href="{{ route('businesses.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Businesses</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-file-word"></i>
+                        <p>
+                            Reports
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Residents</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Businesses</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Other Reports</p>
                             </a>
                         </li>
                     </ul>
