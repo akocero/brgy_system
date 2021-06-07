@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HouseholdController;
 use App\Http\Controllers\OfficialController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ResidentController;
 use App\Http\Controllers\ResolutionController;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,7 @@ Route::apiResource('households', HouseholdController::class)->except('destroy');
 Route::get('certificates/resident/{resident}', [CertificateController::class, 'resident'])->name('certificates.resident');
 Route::get('certificates/business/{business}', [CertificateController::class, 'business'])->name('certificates.business');
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
 // Route::apiResource('officials', OfficialController::class)->except('destroy');
 // Route::get('households', [HouseholdController::class, 'index'])->name('households.index');
 
