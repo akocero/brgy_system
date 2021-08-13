@@ -21,12 +21,22 @@ class DashboardController extends Controller
     {
         $residents = $this->residents;
         $population = $this->residents->count();
+        // dd($population);
         $pwd = $this->residents->where('is_disabled', 1)->count();
         $registered_voters = $this->residents->where('is_voter', '1')->count();
         $male_residents = $this->residents->where('gender', 'male')->count();
         $female_residents = $this->residents->where('gender', 'female')->count();
-        $male_percent = $this->get_percentage($male_residents, $population);
-        $female_percent = $this->get_percentage($female_residents, $population);
+
+
+
+        if($population > 0) {
+            $male_percent = $this->get_percentage($male_residents, $population);
+            $female_percent = $this->get_percentage($female_residents, $population);
+        }else{
+            $male_percent = 0;
+            $female_percent = 0;
+        }
+
         $households = Household::get()->count();
         $businesses = Business::get()->count();
         $covid_total = $this->residents->where('covid_positive', '!=', 0)->count();

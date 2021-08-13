@@ -1,31 +1,31 @@
 @font-face {
     font-family: "Source Sans Pro";
-    src: url("/fonts/SourceSansPro-Regular.ttf") format('truetype');
+    src: url("/fonts/SourceSansPro-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Source Sans Pro";
-    src: url("/fonts/SourceSansPro-SemiBold.ttf") format('truetype');
+    src: url("/fonts/SourceSansPro-SemiBold.ttf") format("truetype");
     font-weight: 600;
 }
 
 @font-face {
     font-family: "Source Sans Pro";
-    src: url("/fonts/SourceSansPro-Bold.ttf") format('truetype');
+    src: url("/fonts/SourceSansPro-Bold.ttf") format("truetype");
     font-weight: 700;
 }
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
-@import '~admin-lte/dist/css/adminlte.css';
+@import "~bootstrap/scss/bootstrap";
+@import "~admin-lte/dist/css/adminlte.css";
 
 body {
-    font-family: 'Source Sans Pro', sans-serif !important;
+    font-family: "Source Sans Pro", sans-serif !important;
     // font-family: 'Roboto', sans-serif;
     letter-spacing: 0.2px !important;
 }
@@ -37,16 +37,18 @@ body {
     border: none !important;
 }
 
-table.table td, table.table th{
-    border: 1px solid #E9E9E9 !important;
+table.table td,
+table.table th {
+    border: 1px solid #e9e9e9 !important;
     padding: 6px !important;
 }
 
-table.table tr:nth-child(even){background-color: #FCFCFC
-!important}
+table.table tr:nth-child(even) {
+    background-color: #fcfcfc !important;
+}
 th {
     font-weight: 600;
-    background-color: #F9F9F9 !important;
+    background-color: #f9f9f9 !important;
 }
 
 label {
@@ -73,21 +75,19 @@ label {
     margin-bottom: -1.5px;
     color: #36926f;
     background-color: none !important;
-    border-bottom: 2px solid #47CA98;
+    border-bottom: 2px solid #47ca98;
     border-radius: 0;
     padding-bottom: 1rem;
-
 }
 
-.card form .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+.card form .nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
     background-color: white;
 }
 
 ul#pills-tab {
-    border-bottom: 1px solid rgba(#47CA98, 0.2);
+    border-bottom: 1px solid rgba(#47ca98, 0.2);
 }
-
-
 
 .image-container {
     .btn-delete-image {
@@ -113,11 +113,7 @@ ul#pills-tab {
         background-color: #da5043;
         color: white;
     }
-
-
 }
-
-
 
 // .nav-item {
 //     a {
@@ -129,7 +125,6 @@ ul#pills-tab {
 //         }
 
 //     }
-
 
 // }
 
@@ -150,43 +145,41 @@ ul#pills-tab {
 }
 
 .btn {
-
     &-custom-success {
-        border: 1px solid #47CA98 !important;
-        transition: all .3s ease;
-        box-shadow: 0px 5px 10px rgba(#47CA98, 0.4) !important;
-        background-color: #47CA98;
+        border: 1px solid #47ca98 !important;
+        transition: all 0.3s ease;
+        box-shadow: 0px 5px 10px rgba(#47ca98, 0.4) !important;
+        background-color: #47ca98;
         color: white;
 
         &:hover {
             transform: translateY(-2px);
             color: white;
-            background-color: darken(#47CA98, 2);
-            box-shadow: 0px 15px 20px rgba(#47CA98, 0.4) !important;
+            background-color: darken(#47ca98, 2);
+            box-shadow: 0px 15px 20px rgba(#47ca98, 0.4) !important;
         }
 
         &:active {
             transform: translateY(0);
-            box-shadow: 0px 5px 10px rgba(#47CA98, 0.4) !important;
+            box-shadow: 0px 5px 10px rgba(#47ca98, 0.4) !important;
         }
     }
-
-
 }
-.card, .navbar {
+.card,
+.navbar {
     .nav-link:hover {
-        color: #47CA98 !important;
+        color: #47ca98 !important;
     }
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #47CA98;
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: #47ca98;
 }
 
 .btn-link {
     color: #36926f !important;
 }
-
 
 .card-list {
     .card {
@@ -196,7 +189,7 @@ ul#pills-tab {
 }
 
 .bg-custom-olive {
-    background-color: #47CA98;
+    background-color: #47ca98;
     color: white;
 }
 
@@ -206,18 +199,17 @@ ul#pills-tab {
 }
 
 .bg-custom-violet {
-    background-color: #AF7AC5;
+    background-color: #af7ac5;
     color: white;
 }
 
 .bg-custom-danger {
-    background-color: #EC7063;
+    background-color: #ec7063;
     color: white;
 }
 
 .info-box {
     .info-box-icon {
-
         svg {
             opacity: 0.4;
             transform: rotate(-35deg) !important;
@@ -229,6 +221,7 @@ ul#pills-tab {
     transform: rotate(-180deg);
 }
 
-
-
-
+#map {
+    height: 500px;
+    width: 100%;
+}
